@@ -5,23 +5,41 @@ socialPlatform
 ### 目录结构
 
 ├── App.vue			 	 APP
+
 ├── api/				 
+
 │   └── api.js				调用后端api	
+
 ├── assets/				资源文件夹
+
 │   └── logo.png
+
 ├── components/			组件文件夹
+
 │   ├── HelloWorld.vue		
+
 │   ├── common/			子组件（这边是自己开发时候的组件位置）
+
 │   ├── global/				全局组件（header、main）
+
 │   └── pages/				子页面 (有子组件拼接得到的子页面)
+
 ├── main.js				vue main
+
 ├── router/
+
 │   └── routers.js			路由逻辑
+
 ├── store/
+
 │   └── index.js			信息存储
+
 ├── styles/
+
 │   └── base.scss			样式文件
+
 └── utils/
+
 ​    └── index.js				工具方法
 
 ## Build Setup
