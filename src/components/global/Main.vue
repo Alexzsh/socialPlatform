@@ -1,7 +1,9 @@
 <template>
   <div class="g-main">
     aaaafffff
-    <router-view />
+    <div class="g-main-wrapper">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -14,6 +16,17 @@ export default {
 <style lang="scss" scoped>
 .g-main {
   width: 100%;
-  min-height: 100vh;
+  // min-height: 100vh;
+  z-index: 4;
+  position: fixed;
+  // min-width: 1190px;
+  // display: inline-block;
+
+  background: #fff;
+  .g-main-wrapper {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+  }
 }
 </style>

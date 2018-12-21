@@ -1,4 +1,3 @@
-import MainIndex from '../components/HelloWorld.vue'
 import PersonalInfo from '../components/pages/personalInfo'
 import Login from '../components/pages/login.vue'
 
@@ -9,7 +8,7 @@ const routers = [{
 {
   path: '/index',
   name: 'main-index',
-  component: MainIndex
+  component: PersonalInfo
 },
 {
   path: '/PersonalInfo',

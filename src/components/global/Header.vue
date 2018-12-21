@@ -41,6 +41,11 @@
                  class="circle">
           </el-tooltip>
         </div>
+        <div class="g-nav-logout"
+             v-on:click="logout">
+          <el-button type="primary"
+                     round>登出</el-button>
+        </div>
       </div>
     </div>
   </div>
@@ -52,16 +57,19 @@
 export default {
   /* eslint-disable */
   name: 'global-header',
-  components: {},
   data () {
     return {
-      activeIndex: '1'
+      activeIndex: "1"
     }
-  },
 
+  },
   methods: {
     changeRoute (path) {
       this.$router.push(path)
+    },
+    logout () {
+      this.$store.islogin = false
+      console.log('logout', this.$store.islogin)
     }
   }
 }
@@ -72,6 +80,7 @@ export default {
   z-index: 5;
   position: fixed;
   // min-width: 1190px;
+  display: inline-block;
   top: 0;
   left: 0;
   background: #fff;
@@ -79,7 +88,7 @@ export default {
   height: 46px;
   box-shadow: 0 1px 5px #999999;
   .g-header-wrapper {
-    width: 60%;
+    width: 80%;
     position: relative;
     margin: 0 auto;
   }
@@ -91,7 +100,7 @@ export default {
   }
 
   .g-nav-left {
-    display: inline-block;
+    // display: inline-block;
     position: absolute;
     left: 0;
 
@@ -109,14 +118,16 @@ export default {
     }
   }
   .g-nav-right {
-    .circle {
-      position: absolute;
-      right: 0;
+    width: 150px;
+    float: right;
 
-      top: 0;
-      height: 45px;
-      // -webkit-clip-path: circle(100%);
-      clip-path: circle(100%);
+    margin-top: 3px;
+    .head-icon {
+      float: left;
+      .circle {
+        height: 45px;
+        clip-path: circle(100%);
+      }
     }
   }
 }

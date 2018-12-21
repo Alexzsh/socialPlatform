@@ -8,7 +8,7 @@
     <p @click="registDialogVisable = true">还没有账号？</p>
 
     <el-dialog
-      title="注册"
+      title="注&nbsp;&nbsp;册"
       :visible.sync="registDialogVisable"
       width="40%"
       :before-close="handleClose">
@@ -31,7 +31,7 @@
         <el-form-item>
           <el-button class="regist-input" type="primary" @click="submitForm('ruleForm')">注&nbsp;&nbsp;册</el-button>
           <br>
-          <el-button class="regist-input" @click="resetForm('ruleForm')">重置</el-button>
+          <el-button class="regist-input" @click="resetForm('ruleForm')">重&nbsp;&nbsp;置</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
