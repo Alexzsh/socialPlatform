@@ -87,3 +87,14 @@ npm test
   - [ ] 通知页
   - [ ] main 左上角 个人信息展示
   - [ ] 头像-个人信息-添加好友 悬浮框
+
+### 组件用法
+
+##### 头像
+直接在页面中需要使用头像的地方使用以下代码：
+```html
+<svg class="icon" aria-hidden="true">
+    <use xlink:href="#favicon-default33"></use>
+</svg>
+```
+只需要修改 `<use>` 里的 href 的值，值为 `#favicon-default1` ~~ `#favicon-default33` ，头像的大小可以给 `<svg>` 标签加个 `id` 然后调整 `height` 和 `width` 。
