@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import api from '../../api/api'
 export default {
   data () {
     return {
@@ -87,6 +88,11 @@ export default {
       })
     },
     clickSubmit () {
+      api.post({ name: 'zsh', moment: { 'content': this.inputText, 'pictureUrl': this.imageUrl, 'likeList': null } }).then(re => {
+        console.log(re)
+      }).catch(e => {
+        console.log(e)
+      })
       console.log(this.inputText)
     },
     handleAvatarSuccess (res, file) {
