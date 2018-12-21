@@ -1,10 +1,11 @@
 <template>
-  <div class="page">
-    PersonalInfo
+  <div>
+    <editor></editor>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
+import editor from '../common/fullText'
 export default {
   data () {
     return {
@@ -12,10 +13,10 @@ export default {
     }
   },
   components: {
-
+    editor: editor
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style>
 </style>

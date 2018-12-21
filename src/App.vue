@@ -9,14 +9,13 @@
 
 import Header from './components/global/Header'
 import Main from './components/global/Main'
-import Hello from './components/HelloWorld'
 
 export default {
   name: 'App',
   components: {
     GloablHeader: Header,
-    GlobalMain: Main,
-    HelloWorld: Hello
+    GlobalMain: Main
+
   },
   props: {},
   data () {
