@@ -1,12 +1,13 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
+
 const server = axios.create({
   baseURL: 'http://139.199.221.89:8083/', // change to our ip
   timeout: 5000
 })
 const apiDes = [{
-  fun: 'post',
+  fun: 'addMoment',
   url: 'moment/addMoment',
   method: 'post',
   params: ['moment', 'name']
@@ -30,7 +31,7 @@ function ApiGenerator (des) {
       return server({
         url: des[i].url,
         method: des[i].method,
-        data: data
+        data
       })
     }
   }
