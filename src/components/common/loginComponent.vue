@@ -4,7 +4,7 @@
     <br>
     <el-input class="input" type="password" v-model="pwd" placeholder="请输入密码"></el-input>
     <br>
-    <el-button class="input" type="primary">登&nbsp;&nbsp;录</el-button>
+    <el-button class="input" type="primary" @click="login">登&nbsp;&nbsp;录</el-button>
     <p @click="registDialogVisable = true">还没有账号？</p>
 
     <el-dialog
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import api from '../../api/api'
+
 export default {
   name: 'LoginComponent',
   data () {
@@ -145,6 +147,13 @@ export default {
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
+    },
+    login () {
+      api.login({ name: this.userName, password: this.pwd }).then(re => {
+        console.log('loginSuccess', re)
+      }).catch(e => {
+        console.log('loginError', e)
+      })
     }
   }
 }
