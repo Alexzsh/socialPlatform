@@ -1,6 +1,6 @@
 <template>
   <div class="moment-stream">
-    <div v-for="moment in moments" :key="moment.id">
+    <div v-for="moment in moments" :key="moment.id" class="moment-content">
       <div class="stream-header">
         <svg class="icon head-icon" aria-hidden="true">
           <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>
@@ -56,7 +56,7 @@ export default {
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
-          likeList: ['1', '5', '6']
+          likeList: ['1', '5', '6', '1', '5', '6', '5', '6', '1', '5', '6', '5', '6', '1', '5', '6']
         }
       ]
     }
@@ -85,6 +85,9 @@ export default {
   margin: 10px auto;
   border-bottom: 1px black;
 
+  .moment-content:hover{
+    background-color: rgb(245, 245, 245)
+  }
   .stream-header {
     width: 100%;
     height: 30px;
@@ -125,7 +128,8 @@ export default {
   .stream-toolbar {
     position: relative;
     left: 100px;
-    margin: 0 auto 20px;
+    margin: 5px auto;
+    height: 30px;
 
     span {
       position: relative;
