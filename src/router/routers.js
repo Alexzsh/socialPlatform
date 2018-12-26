@@ -3,6 +3,7 @@ import Login from '../components/pages/login.vue'
 import personInformation from '../components/common/personInfomation'
 import fullText from '../components/common/fullText'
 import momentStream from '../components/common/momentStream'
+import notifyContent from '../components/common/notifyContent'
 
 const routers = [{
   path: '/',
@@ -37,6 +38,11 @@ const routers = [{
   path:'/momentStream',
   name:'momentStream',
   component:momentStream
+},
+{
+  path:'/notifyContent',
+  name:'notifyContent,',
+  component:notifyContent
 }
 ]
 export default routers

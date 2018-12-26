@@ -4,7 +4,7 @@
       <div class="post">
         <div class="person-header">
              <svg  id="ficon" class="icon" aria-hidden="true">
-                <use xlink:href="#favicon-default"></use>
+                <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
           </svg>
         </div>
         <div class="person-text">
@@ -24,7 +24,6 @@
 
           </div>
         </div>
-      </div>
     </el-card>
 </template>
 <script>
@@ -36,7 +35,7 @@
               {
                 id:'1',
                 userName: 'Test',
-                headIcon: '8',
+                iconId: '8',
                 contentNum:'15',
                 followeeNum:'25'
               }

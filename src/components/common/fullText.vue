@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 <template>
-
   <div class="post">
     <div class="circle left">
       <img src="https://hacks.mozilla.org/files/2017/06/firefox-logo.png"
