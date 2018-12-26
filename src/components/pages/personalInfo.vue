@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <editor></editor>
-    <stream />
-  </div>
+    <div>
+      <editor></editor>
+      <stream />
+    </div>
 </template>
 
 <script>
