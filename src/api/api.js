@@ -16,7 +16,10 @@ const apiDes = [{
   method: 'post',
   params: ['moment', 'name']
 }, {
-
+  fun: 'login',
+  url: 'login',
+  method: 'post',
+  params: ['name', 'password']
 }]
 // 由接口描述生成接口调用函数
 function ApiGenerator (des) {
