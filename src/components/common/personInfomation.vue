@@ -5,13 +5,13 @@
         <div class="person-header">
              <svg  id="ficon" class="icon" aria-hidden="true">
                 <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
-          </svg>
+             </svg>
         </div>
         <div class="person-text">
            <div class="person-name">
              <a class="person-u">{{person.userName}}</a>
            </div>
-          <div class="person-content">
+           <div class="person-content">
             <div  class="left">
               <span><strong>动态</strong></span>
               <span> {{ person.contentNum }}</span>
@@ -21,9 +21,8 @@
               <span>{{person.followeeNum}}</span>
            </div>
           </div>
-
-          </div>
         </div>
+      </div>
     </el-card>
 </template>
 <script>
