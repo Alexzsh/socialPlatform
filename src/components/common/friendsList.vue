@@ -70,6 +70,7 @@ export default {
 .header{
   height: 40px;
   background-color: #409EFF;
+  border-radius: 0.3em;
 
   span {
     font-size: 15px;

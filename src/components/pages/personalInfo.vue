@@ -3,7 +3,7 @@
     <list class="friends-list"></list>
     <editor></editor>
     <stream />
-    <recommand class="friends-recommand"></recommand>
+    <recommend class="friends-recommand"></recommend>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import editor from '../common/fullText'
 import stream from '../common/momentStream'
 import friendsList from '../common/friendsList'
-import friendsRecommand from '../common/friendsRecommand'
+import friendsRecommend from '../common/friendsRecommend'
 
 export default {
   data () {
@@ -23,7 +23,7 @@ export default {
     editor: editor,
     stream: stream,
     list: friendsList,
-    recommand: friendsRecommand
+    recommend: friendsRecommend
   }
 }
 </script>
