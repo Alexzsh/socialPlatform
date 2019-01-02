@@ -1,15 +1,16 @@
 <template>
-  <div id="friends-list">
+  <div id="friends-recommand">
     <div class="header">
-      <span><strong>好友列表</strong></span>
+      <span><strong>好友的好友</strong></span>
     </div>
-    <div v-for="(friend, index) in friends" :key="index" class="friend-list">
+    <div v-for="(friend, index) in friends" :key="index" class="friend-recommand">
       <svg class="icon head-icon" aria-hidden="true">
         <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
       </svg>
-      <span class="friend-list-name">
+      <span class="friend-recommand-name">
         <strong>{{ friend.name }}</strong>
-        <span>#  {{ friend.className }}</span>
+        <!-- <span>#  {{ friend.className }}</span> -->
+        <span>{{ friend.count }}  个共同好友</span>
       </span>
     </div>
   </div>
@@ -17,34 +18,34 @@
 
 <script>
 export default {
-  name: 'FriendsList',
+  name: 'FriendsRecommand',
   data () {
     return {
       friends: [
         {
           name: '小王',
           headIcon: '1',
-          className: '1801'
+          count: '1'
         },
         {
           name: '小张',
           headIcon: '2',
-          className: '1802'
+          count: '2'
         },
         {
           name: '小李',
           headIcon: '3',
-          className: '1803'
+          count: '3'
         },
         {
           name: '小红',
           headIcon: '4',
-          className: '1804'
+          count: '4'
         },
         {
           name: '小黑',
           headIcon: '5',
-          className: '1805'
+          count: '5'
         }
       ]
     }
@@ -53,11 +54,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#friends-list {
+#friends-recommand {
   width: 200px;
 }
 
-.friend-list {
+.friend-recommand {
   height: 50px;
   margin: 0;
   line-height: 50px;
@@ -90,17 +91,13 @@ export default {
   left: 20px;
 }
 
-.friend-list-name {
+.friend-recommand-name {
   font-size: 12px;
   position: relative;
-  top: -10px;
 
   span {
-    float: right;
-    position: relative;
     font-size: 8px;
-    left: -80px;
-    top: 5px;
+    margin-left: 10px;
   }
 }
 </style>
