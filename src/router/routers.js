@@ -4,6 +4,7 @@ import personInformation from '../components/common/personInfomation'
 import fullText from '../components/common/fullText'
 import momentStream from '../components/common/momentStream'
 import notifyContent from '../components/common/notifyContent'
+import floating_window from '../components/common/floating_window'
 
 const routers = [{
   path: '/',
@@ -43,6 +44,11 @@ const routers = [{
   path:'/notifyContent',
   name:'notifyContent,',
   component:notifyContent
-}
+},
+  {
+    path:'/floating_window',
+    name:'floating_window',
+    component:floating_window
+  }
 ]
 export default routers

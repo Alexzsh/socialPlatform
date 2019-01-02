@@ -12,7 +12,6 @@
             <i class="el-icon-tickets"></i>
             <a href="#/index">首 页</a>
           </el-menu-item>
-
           <el-menu-item index="2">
             <i class="el-icon-bell"></i>
             <el-badge :value="2"
@@ -52,8 +51,7 @@
 </template>
 
 <script>
-// import api from '../../api/api'
-
+//import api from '../../api/api'
 export default {
   /* eslint-disable */
   name: 'global-header',
@@ -71,7 +69,7 @@ export default {
       this.$store.islogin = false
       console.log('logout', this.$store.islogin)
     }
-  }
+  },
 }
 </script>
 

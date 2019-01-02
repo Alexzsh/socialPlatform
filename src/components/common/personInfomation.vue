@@ -12,11 +12,11 @@
              <a class="person-u">{{person.userName}}</a>
            </div>
            <div class="person-content">
-            <div  class="left">
+            <div  class="pleft">
               <span><strong>动态</strong></span>
               <span> {{ person.contentNum }}</span>
             </div>
-            <div class="right">
+            <div class="pright">
               <span><strong>好友人数</strong></span>
               <span>{{person.followeeNum}}</span>
            </div>
@@ -71,7 +71,11 @@
     padding-top: 70px;
     padding-left:55px;
   }
-  .left{
+  .post{
+    width: 398px;
+
+  }
+  .pleft{
     float:left;
   }
   #ficon{
