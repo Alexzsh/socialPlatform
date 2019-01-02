@@ -1,6 +1,6 @@
 import PersonalInfo from '../components/pages/personalInfo'
 import Login from '../components/pages/login.vue'
-import personInformation from '../components/common/personInfomation'
+import personInformation from '../components/common/leftpersonInfomation'
 import fullText from '../components/common/fullText'
 import momentStream from '../components/common/momentStream'
 import notifyContent from '../components/common/notifyContent'
