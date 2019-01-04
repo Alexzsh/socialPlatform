@@ -1,31 +1,48 @@
 <template>
   <div id="personal-info">
     <div class="head-icon">
-      <svg class="icon head-icon" aria-hidden="true">
+      <svg class="icon head-icon"
+           aria-hidden="true">
         <use :xlink:href="'#favicon-default' + (headIcon)"></use>
       </svg>
     </div>
-    <div v-if="edit" class="content">
-      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="姓名" prop="name">
-          <el-input v-model="ruleForm.name" disabled :placeholder="userName"></el-input>
+    <div v-if="edit"
+         class="content">
+      <el-form :model="ruleForm"
+               status-icon
+               :rules="rules"
+               ref="ruleForm"
+               label-width="100px"
+               class="demo-ruleForm">
+        <el-form-item label="姓名"
+                      prop="name">
+          <el-input v-model="ruleForm.name"
+                    disabled
+                    :placeholder="userName"></el-input>
         </el-form-item>
-        <el-form-item label="年龄" prop="age">
+        <el-form-item label="年龄"
+                      prop="age">
           <el-input v-model.number="ruleForm.age"></el-input>
         </el-form-item>
-        <el-form-item label="班级" prop="className">
+        <el-form-item label="班级"
+                      prop="className">
           <el-input v-model="ruleForm.className"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱" prop="email">
+        <el-form-item label="邮箱"
+                      prop="email">
           <el-input v-model="ruleForm.email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button class="btn" type="primary" @click="submitForm('ruleForm')" :disabled="isComplete">提&nbsp;&nbsp;交</el-button>
+          <el-button class="btn"
+                     type="primary"
+                     @click="submitForm('ruleForm')"
+                     :disabled="isComplete">提&nbsp;&nbsp;交</el-button>
         </el-form-item>
       </el-form>
     </div>
-    <div v-else class="content">
-      <div class="name" >
+    <div v-else
+         class="content">
+      <div class="name">
         姓名：{{ ruleForm.name }}
       </div>
       <div class="age">
@@ -35,7 +52,9 @@
         班级： {{ ruleForm.className }}
       </div>
       <div class="edit-btn">
-        <el-button class="btn" type="primary" @click="edit = true">修&nbsp;&nbsp;改</el-button>
+        <el-button class="btn"
+                   type="primary"
+                   @click="edit = true">修&nbsp;&nbsp;改</el-button>
       </div>
     </div>
   </div>

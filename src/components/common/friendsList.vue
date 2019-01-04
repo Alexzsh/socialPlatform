@@ -3,13 +3,16 @@
     <div class="header">
       <span><strong>好友列表</strong></span>
     </div>
-    <div v-for="(friend, index) in friends" :key="index" class="friend-list">
-      <svg class="icon head-icon" aria-hidden="true">
+    <div v-for="(friend, index) in friends"
+         :key="index"
+         class="friend-list">
+      <svg class="icon head-icon"
+           aria-hidden="true">
         <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
       </svg>
       <span class="friend-list-name">
         <strong>{{ friend.name }}</strong>
-        <span>#  {{ friend.className }}</span>
+        <span># {{ friend.className }}</span>
       </span>
     </div>
   </div>
@@ -67,9 +70,9 @@ export default {
   }
 }
 
-.header{
+.header {
   height: 40px;
-  background-color: #409EFF;
+  background-color: #409eff;
   border-radius: 0.3em;
 
   span {

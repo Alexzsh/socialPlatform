@@ -14,7 +14,7 @@
       <h2>看看身边的新鲜事！</h2>
       <div id="login-component">
         <LoginComponent />
-    </div>
+      </div>
     </div>
   </div>
 </template>
@@ -40,58 +40,57 @@ export default {
   width: 100%;
   height: 800px;
 }
-  #left {
-    display: block;
-    width: 48%;
-    height: 100%;
-    float: left;
-    background-color: #1da1f2;
-    background-image: url(../../assets/eagle1.svg);
-    background-repeat: no-repeat;
-    background-position: 0 50%;
-    background-size: 200%;
+#left {
+  display: block;
+  width: 48%;
+  height: 100%;
+  float: left;
+  background-color: #1da1f2;
+  background-image: url(../../assets/eagle1.svg);
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  background-size: 200%;
 
-    img {
-      position: absolute;
-      left: -2%;
-      top: -50%;
-      opacity: 0.3;
-      height: 1500px;
-      width: 1500px;
-      z-index: 2;
-    }
-
-    #slogan {
-      margin: 200px auto;
-      margin-left: 20%;
-
-      .slogan {
-        font-size: 3em;
-        color: #ffffff;
-        display: block;
-        margin: 20px;
-        text-align: left
-      }
-    }
+  img {
+    position: absolute;
+    left: -2%;
+    top: -50%;
+    opacity: 0.3;
+    height: 1500px;
+    width: 1500px;
+    z-index: 2;
   }
 
-  #right {
-    display: block;
-    width: 48%;
-    height: 100%;
-    float: right;
-    z-index: 10;
+  #slogan {
+    margin: 200px auto;
+    margin-left: 20%;
 
-    #logo {
-      width: 200px;
-      height: 200px;
-      margin: 50px auto -20px;
-
+    .slogan {
+      font-size: 3em;
+      color: #ffffff;
+      display: block;
+      margin: 20px;
+      text-align: left;
     }
   }
+}
 
-  #loginComponent {
-    width: 50%;
-    margin: auto;
+#right {
+  display: block;
+  width: 48%;
+  height: 100%;
+  float: right;
+  z-index: 10;
+
+  #logo {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto -20px;
   }
+}
+
+#loginComponent {
+  width: 50%;
+  margin: auto;
+}
 </style>

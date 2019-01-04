@@ -4,7 +4,7 @@ import personInformation from '../components/common/leftpersonInfomation'
 import fullText from '../components/common/fullText'
 import momentStream from '../components/common/momentStream'
 import notifyContent from '../components/common/notifyContent'
-import floating_window from '../components/common/floating_window'
+import floatingWindow from '../components/common/floating_window'
 
 const routers = [{
   path: '/',
@@ -36,19 +36,19 @@ const routers = [{
   component: fullText
 },
 {
-  path:'/momentStream',
-  name:'momentStream',
-  component:momentStream
+  path: '/momentStream',
+  name: 'momentStream',
+  component: momentStream
 },
 {
-  path:'/notifyContent',
-  name:'notifyContent,',
-  component:notifyContent
+  path: '/notifyContent',
+  name: 'notifyContent,',
+  component: notifyContent
 },
-  {
-    path:'/floating_window',
-    name:'floating_window',
-    component:floating_window
-  }
+{
+  path: '/floating_window',
+  name: 'floating_window',
+  component: floatingWindow
+}
 ]
 export default routers

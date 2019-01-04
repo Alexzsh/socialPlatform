@@ -1,8 +1,11 @@
 <template>
   <div class="moment-stream">
-    <div v-for="(moment, index) in moments" :key="index" class="moment-content">
+    <div v-for="(moment, index) in moments"
+         :key="index"
+         class="moment-content">
       <div class="stream-header">
-        <svg class="icon head-icon" aria-hidden="true">
+        <svg class="icon head-icon"
+             aria-hidden="true">
           <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>
         </svg>
         <div class="header-text">
@@ -11,20 +14,30 @@
         </div>
       </div>
       <div class="stream-body">
-        <div class="stream-body-content"><p>{{ moment.content }}</p></div>
-        <img :src="moment.pictureUrl" v-if="moment.pictureUrl">
+        <div class="stream-body-content">
+          <p>{{ moment.content }}</p>
+        </div>
+        <img :src="moment.pictureUrl"
+             v-if="moment.pictureUrl">
       </div>
       <div class="stream-toolbar">
-        <div v-if="isLike(index)" class="pic" @click="addLike(index)">
+        <div v-if="isLike(index)"
+             class="pic"
+             @click="addLike(index)">
           <img :src="require('@/assets/cc-heart.png')">
         </div>
-        <div v-else class="pic" @click="addLike(index)">
+        <div v-else
+             class="pic"
+             @click="addLike(index)">
           <img :src="require('@/assets/heart.png')">
         </div>
         <span><strong>{{ moment.likeList.length }}</strong></span>
         <div class="like-list">
-          <div v-for="(like, index1) in moment.likeList" :key="index1" class="like-list-icon">
-            <svg class="icon head-icon" aria-hidden="true">
+          <div v-for="(like, index1) in moment.likeList"
+               :key="index1"
+               class="like-list-icon">
+            <svg class="icon head-icon"
+                 aria-hidden="true">
               <use :xlink:href="'#favicon-default' + (like.headIcon)"></use>
             </svg>
           </div>
@@ -113,7 +126,7 @@ export default {
       if (this.inArray(this.moments[index].likeList, this.name)) {
         this.removeItem(this.moments[index].likeList, this.name)
       } else {
-        this.moments[index].likeList.push({'name': this.name, 'headIcon': this.headIcon})
+        this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
       }
     }
   },
@@ -136,8 +149,8 @@ export default {
   margin: 10px auto;
   border-bottom: 1px black;
 
-  .moment-content:hover{
-    background-color: rgb(245, 245, 245)
+  .moment-content:hover {
+    background-color: rgb(245, 245, 245);
   }
   .stream-header {
     width: 100%;
