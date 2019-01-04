@@ -34,7 +34,7 @@ export default {
 .leftperson {
   float: left;
   position: relative;
-  top: -500px;
+  top: 0px;
 }
 .friends-list {
   float: left;
