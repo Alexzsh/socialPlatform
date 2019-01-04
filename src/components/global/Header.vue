@@ -17,7 +17,7 @@
             <el-badge :value="2"
                       class="item">
             </el-badge>
-            <a href="#/index">通 知</a>
+            <notifyContent class="notify" />
           </el-menu-item>
         </el-menu>
       </div>
@@ -53,9 +53,13 @@
 
 <script>
 // import api from '../../api/api'
+import notifyContent from '../common/notifyContent'
 export default {
   /* eslint-disable */
   name: 'global-header',
+  components: {
+    notifyContent: notifyContent
+  },
   data () {
     return {
       activeIndex: "1"
@@ -108,7 +112,11 @@ export default {
       margin-top: -30px;
       margin-left: -20px;
     }
-
+    .notify {
+      position: relative;
+      top: -45px;
+      left: 25px;
+    }
     .el-menu--horizontal {
       border-bottom: none;
       .el-menu-item {
