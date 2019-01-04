@@ -10,11 +10,11 @@
              aria-hidden="true">
           <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
         </svg>
-      </div>
-      <div class="person-text">
         <div class="person-name">
           <a class="person-u">@{{person.userName}}</a>
         </div>
+      </div>
+      <div class="person-text">
         <div class="person-content">
           <div class="pleft">
             <span><strong>动态</strong></span>
@@ -31,7 +31,7 @@
 </template>
 <script>
 export default {
-
+  name: 'personInfomation.vue',
   data () {
     return {
       person:
@@ -46,48 +46,43 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang='scss'>
 .box-card {
   /*margin-bottom: 10px;*/
   position: relative;
-}
-.u-bgUserColor {
-  background-color: #1da1f2 !important ;
-}
-.u-block {
-  display: block !important;
-  height: 70px;
-  width: 100%;
-  padding: 0;
-}
-.person-name {
-  position: absolute;
-  width: 185px;
-  left: 45px;
-  font-weight: bold;
-  font-size: 20px;
-}
-.person-content {
-  font-size: 14px;
-  padding-top: 70px;
-  padding-left: 0px;
-}
-.post {
-  width: 100%;
-}
-.pleft {
-  float: left;
-  padding-left: 10px;
-}
-.pright {
-  float: left;
-  padding-left: 35px;
-  /*padding-right: 10px;*/
-}
-#ficon {
-  width: 78px;
-  height: 78px;
-  margin: -40px 0 0 0;
-  float: left;
+  .u-bgUserColor {
+    background-color: #1da1f2 !important ;
+  }
+  .u-block {
+    display: block !important;
+    height: 70px;
+    width: 100%;
+    padding: 0;
+  }
+  .lpost {
+    width: 100%;
+    .person-name {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .person-content {
+      font-size: 14px;
+      padding-top: 25px;
+      .pleft {
+        position: absolute;
+        left: 20px;
+      }
+      .pright {
+        position: absolute;
+        left: 95px;
+      }
+    }
+  }
+  #ficon {
+    width: 78px;
+    height: 78px;
+    margin: -40px 0 0 0;
+    float: left;
+  }
 }
 </style>
