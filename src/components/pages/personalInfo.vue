@@ -57,6 +57,7 @@ export default {
       width: 200px;
       .leftperson {
         margin-bottom: 20px;
+        height: 180px;
         // left: 20%;
       }
       .friends-list {

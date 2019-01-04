@@ -49,6 +49,7 @@ export default {
 <style scoped lang='scss'>
 .box-card {
   /*margin-bottom: 10px;*/
+
   position: relative;
   .u-bgUserColor {
     background-color: #1da1f2 !important ;
@@ -59,7 +60,7 @@ export default {
     width: 100%;
     padding: 0;
   }
-  .lpost {
+  .post {
     width: 100%;
     .person-name {
       font-weight: bold;
