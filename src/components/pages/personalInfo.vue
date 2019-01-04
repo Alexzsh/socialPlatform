@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--<lperson class="leftperson"></lperson>-->
     <list class="friends-list"></list>
     <editor></editor>
     <stream />
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+import lperson from  '../common/leftpersonInfomation'
 import editor from '../common/fullText'
 import stream from '../common/momentStream'
 
@@ -17,12 +19,18 @@ export default {
   },
   components: {
     editor: editor,
-    stream: stream
+    stream: stream,
+    lperson:lperson
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.leftperson{
+  float: left;
+  position: relative;
+  top: -500px;
+}
 .friends-list {
   float: left;
   position: absolute;

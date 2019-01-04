@@ -1,17 +1,18 @@
 <template>
-    <el-card class="box-card">
+  <div class="box-card">
+    <el-card>
       <a class="u-bgUserColor u-block" href="#"></a>
       <div class="post">
         <div class="person-header">
-             <svg  id="ficon" class="icon" aria-hidden="true">
-                <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
-             </svg>
+          <svg  id="ficon" class="icon" aria-hidden="true">
+            <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
+          </svg>
         </div>
         <div class="person-text">
-           <div class="person-name">
-             <a class="person-u">{{person.userName}}</a>
-           </div>
-           <div class="person-content">
+          <div class="person-name">
+            <a class="person-u">{{person.userName}}</a>
+          </div>
+          <div class="person-content">
             <div  class="pleft">
               <span><strong>动态</strong></span>
               <span> {{ person.contentNum }}</span>
@@ -19,15 +20,16 @@
             <div class="pright">
               <span><strong>好友人数</strong></span>
               <span>{{person.followeeNum}}</span>
-           </div>
+            </div>
           </div>
         </div>
       </div>
     </el-card>
+  </div>
 </template>
 <script>
     export default {
-        name: "personInfomation.vue",
+        name: "personInfomation",
         data(){
           return {
             person:
@@ -47,7 +49,7 @@
     width: 420px;
     height:280px;
     margin-bottom: 10px;
-    position: relative;
+    /*position: relative;*/
   }
   .u-bgUserColor{
     background-color: #1DA1F2!important ;
@@ -72,7 +74,7 @@
     padding-left:55px;
   }
   .post{
-    width: 398px;
+    width: 420px;
 
   }
   .pleft{
