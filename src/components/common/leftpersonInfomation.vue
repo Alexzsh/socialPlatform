@@ -31,7 +31,7 @@
 </template>
 <script>
 export default {
-  name: 'personInfomation.vue',
+
   data () {
     return {
       person:
@@ -48,9 +48,8 @@ export default {
 </script>
 <style scoped lang='scss'>
 .box-card {
-  /*margin-bottom: 10px;*/
   width: 200px;
-  height: 200px;
+  height: 180px;
   position: relative;
   .u-bgUserColor {
     background-color: #1da1f2 !important ;
@@ -61,7 +60,7 @@ export default {
     width: 100%;
     padding: 0;
   }
-  .post {
+  .lpost {
     width: 100%;
     .person-name {
       font-weight: bold;

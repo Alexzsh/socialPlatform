@@ -168,7 +168,7 @@ export default {
   display: inline-block;
   width: 590px;
 
-  padding: 10px 12px;
+  // padding: 10px 12px;
   .left {
     position: relative;
     float: left;

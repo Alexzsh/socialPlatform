@@ -23,7 +23,28 @@ const router = new Router({
   // mode: 'history',
   routes: routers
 })
-
+router.beforeEach((to, from, next) => {
+  // 模拟登陆状态
+  // let isLogin = this.$store.state.islogin
+  let isLogin = false
+  if (!isLogin) {
+    if (to.path !== '/login') {
+      alert('要先登录哦~🤣')
+      return next({
+        path: '/login'
+      })
+    } else {
+      next()
+    }
+  } else {
+    if (to.path === '/login') {
+      return next({
+        path: '/'
+      })
+    }
+    next()
+  }
+})
 Vue.prototype.$utils = utils
 /* eslint-disable no-new */
 new Vue({

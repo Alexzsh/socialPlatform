@@ -43,6 +43,7 @@
         <div class="g-nav-logout"
              v-on:click="logout">
           <el-button type="primary"
+                     @click="logout"
                      round>登出</el-button>
         </div>
       </div>
@@ -66,8 +67,9 @@ export default {
       this.$router.push(path)
     },
     logout () {
-      this.$store.islogin = false
-      console.log('logout', this.$store.islogin)
+      this.$store.state.islogin = false
+      console.log('logout', this.$store.state.islogin)
+      this.$router.push('/login')
     }
   },
 }
