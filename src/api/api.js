@@ -12,6 +12,11 @@ const apiDes = [{
   method: 'post',
   params: ['moment', 'name']
 }, {
+  fun: 'register',
+  url: 'person/addregister',
+  method: 'post',
+  params: ['name', 'password', 'sex', 'classNumber', 'captcha']
+}, {
   fun: 'login',
   url: 'login',
   method: 'post',

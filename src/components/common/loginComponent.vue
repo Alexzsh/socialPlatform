@@ -24,13 +24,14 @@
                ref="ruleForm"
                label-width="100px"
                class="demo-ruleForm">
+        <el-form-item label="性别"
+                      prop="sex">
+          <el-radio class="radio" v-model="ruleForm.sex" label="男">男</el-radio>
+          <el-radio class="radio" v-model="ruleForm.sex" label="女">女</el-radio>
+        </el-form-item>
         <el-form-item label="姓名"
                       prop="name">
           <el-input v-model="ruleForm.name"></el-input>
-        </el-form-item>
-        <el-form-item label="年龄"
-                      prop="age">
-          <el-input v-model.number="ruleForm.age"></el-input>
         </el-form-item>
         <el-form-item label="班级"
                       prop="className">
@@ -90,27 +91,20 @@ export default {
         }
       }
     }
-    var checkAge = (rule, value, callback) => {
+    var checkSex = (rule, value, callback) => {
       if (value === '') {
-        return callback(new Error('年龄不能为空'))
-      }
-      setTimeout(() => {
-        if (!Number.isInteger(value)) {
-          callback(new Error('请输入数字值'))
-        } else {
-          if (value <= 0 || value >= 100) {
-            callback(new Error('是不是皮？'))
-          } else {
-            callback()
-          }
+        return callback(new Error('性别不能为空'))
+      } else {
+        if (this.ruleForm.checkSex !== '') {
+          this.$refs.ruleForm.validateField('checkSex')
         }
-      }, 1000)
+      }
     }
     var checkClassName = (rule, value, callback) => {
       if (value === '') {
         return callback(new Error('班级不能为空'))
       } else {
-        if (this.ruleForm.checkName !== '') {
+        if (this.ruleForm.checkClassName !== '') {
           this.$refs.ruleForm.validateField('checkClassName')
         }
       }
@@ -119,7 +113,7 @@ export default {
       if (value === '') {
         return callback(new Error('邮箱不能为空'))
       } else {
-        if (this.ruleForm.checkName !== '') {
+        if (this.ruleForm.checkEmail !== '') {
           this.$refs.ruleForm.validateField('checkClassName')
         }
       }
@@ -152,7 +146,7 @@ export default {
       sendBtnMsg: '发送邮箱验证码',
       ruleForm: {
         name: '',
-        age: '',
+        sex: '',
         className: '',
         email: '',
         pass: '',
@@ -162,8 +156,8 @@ export default {
         name: [
           { validator: checkName, trigger: 'blur' }
         ],
-        age: [
-          { validator: checkAge, trigger: 'blur' }
+        sex: [
+          { validator: checkSex, trigger: 'blur' }
         ],
         className: [
           { validator: checkClassName, trigger: 'blur' }
@@ -192,7 +186,17 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          api.register({
+            name: this.ruleForm.name,
+            password: this.ruleForm.pass,
+            sex: this.ruleForm.sex,
+            classNumber: this.ruleForm.className,
+            captha: this.verificationCode
+          }).then(re => {
+            console.log('success', e)
+          }).catch(e => {
+            console.log('loginError', e)
+          })
         } else {
           console.log('error submit!!')
           return false
@@ -277,5 +281,9 @@ p:hover {
 .veri-code-input {
   width: 200px;
   float: left;
+}
+
+.radio {
+  width: 150px;
 }
 </style>
