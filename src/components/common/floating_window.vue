@@ -12,15 +12,13 @@
                aria-hidden="true">
             <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
           </svg>
-          <div class="fbtn" v-if="true">
-            <el-button type="danger" size="mini"
+          <div class="fbtn" >
+            <el-button type="danger" size="mini" v-if="hover"
                        round
                        class="concern">已是好友</el-button>
-          </div>
-          <div v-else>
-            <el-button type="danger"
+            <el-button type="danger" size="mini" v-else
                        round
-                       class="concern">添加好友</el-button>
+                       class="concern" @click="addFriend">添加好友</el-button>
           </div>
         </div>
         <div class="fperson-text">
@@ -44,10 +42,13 @@
 </template>
 
 <script>
+import api from '../../api/api'
 export default {
   name: 'floating_window',
   data () {
     return {
+      myname: '小健',
+      friendname: '大健10号',
       person:
         {
           id: '2',
@@ -67,18 +68,20 @@ export default {
               name: 'test3',
               headIcon: '1'
             }
-          ],
-          followeeNum: '20'
+          ]
         }
     }
   },
-  // props
-
-  computed: {
-    isLike () {
-      return function (index) {
-        return this.inArray(this.moments[index].likeList, this.name)
-      }
+  props: {
+    hover: false
+  },
+  methods: {
+    addFriend () {
+      api.addfriend({myname: this.myname, friendname: this.friendname}).then(re => {
+        console.log('getMessagesSuccess', re)
+      }).catch(e => {
+        console.log('getMessagesError', e)
+      })
     }
   }
 }

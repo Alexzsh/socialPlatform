@@ -6,8 +6,7 @@
         <use :xlink:href="'#favicon-default' + (headIcon)"></use>
       </svg>
     </div>
-    <div v-if="edit"
-         class="content">
+    <div v-if="edit" class="content">
       <el-form :model="ruleForm"
                status-icon
                :rules="rules"

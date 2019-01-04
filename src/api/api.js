@@ -26,6 +26,11 @@ const apiDes = [{
   url: 'message/confirmMessages',
   method: 'post',
   params: ['name']
+}, {
+  fun: 'addfriend',
+  url: 'person/addfriend',
+  method: 'post',
+  params: ['myname', 'friendname']
 }
 ]
 
