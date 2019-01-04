@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--<lperson class="leftperson"></lperson>-->
+    <lperson class="leftperson"></lperson>
     <list class="friends-list"></list>
     <editor></editor>
     <stream />
