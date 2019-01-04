@@ -204,7 +204,13 @@ export default {
     },
     login () {
       api.login({ name: this.userName, password: this.pwd }).then(re => {
-        console.log('loginSuccess', re)
+        let userData = re.data
+        if (userData.code === 0) {
+          this.$store.commit('login')
+          this.$router.push('/index')
+        } else if (userData.code === 1) {
+          this.$message.error('账号或密码错误！')
+        }
       }).catch(e => {
         console.log('loginError', e)
       })

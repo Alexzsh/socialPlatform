@@ -4,10 +4,16 @@
          :key="index"
          class="moment-content">
       <div class="stream-header">
-        <svg class="icon head-icon"
-             aria-hidden="true">
-          <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>
-        </svg>
+        <el-popover
+          placement="left"
+          trigger="hover">
+          <floatwindow />
+          <div slot="reference">
+            <svg class="icon head-icon" aria-hidden="true">
+              <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>
+            </svg>
+          </div>
+        </el-popover>
         <div class="header-text">
           <span><strong>@{{ moment.userName }}</strong></span>
           <span> · {{ moment.releaseTime }}</span>
@@ -48,14 +54,14 @@
 </template>
 
 <script>
-import store from '../../store'
+import floatWindow from './floating_window'
 
 export default {
   name: 'momentStream',
   data () {
     return {
-      name: store.state.name,
-      headIcon: store.state.headIcon,
+      name: this.$store.state.name,
+      headIcon: this.$store.state.headIcon,
       moments: [
         {
           id: '1',
@@ -103,6 +109,9 @@ export default {
         }
       ]
     }
+  },
+  components: {
+    floatwindow: floatWindow
   },
   methods: {
     inArray: function (arr, item) {
