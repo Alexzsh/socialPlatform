@@ -205,6 +205,8 @@ export default {
     login () {
       api.login({ name: this.userName, password: this.pwd }).then(re => {
         console.log('loginSuccess', re)
+        this.$store.state.name = this.userName
+        this.$router.push('/index')
       }).catch(e => {
         console.log('loginError', e)
       })

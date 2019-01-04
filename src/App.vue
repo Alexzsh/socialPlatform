@@ -1,29 +1,27 @@
 <template>
   <div id="app">
-    <gloabl-header />
-    <global-main />
+    <router-view />
   </div>
 </template>
 
 <script>
 
-import Header from './components/global/Header'
-import Main from './components/global/Main'
-
 export default {
   name: 'App',
   components: {
-    GloablHeader: Header,
-    GlobalMain: Main
-
   },
   props: {},
   data () {
-    return {}
+    return {
+      isLogin: this.$store.state.isLogin
+    }
   },
   method: {
     changeRoute (path) {
       this.$router.push(path)
+    },
+    beforeCreate () {
+      if (this.isLogin === false) { this.$router.push('/login') }
     }
   }
 }
@@ -38,6 +36,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

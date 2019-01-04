@@ -56,7 +56,7 @@
 import api from '../../api/api'
 import axioss from 'axios'
 
-axioss.defaults.withCredentials = false
+axioss.defaults.withCredentials = true
 export default {
   data () {
     return {
@@ -167,9 +167,10 @@ export default {
 </script>
 <style scope lang='scss'>
 .post {
+  position: relative;
   display: inline-block;
   width: 590px;
-  height: 153px;
+
   padding: 10px 12px;
   .left {
     position: relative;

@@ -1,10 +1,20 @@
 <template>
   <div>
-    <!--<lperson class="leftperson"></lperson>-->
-    <list class="friends-list"></list>
-    <editor></editor>
-    <stream />
-    <recommend class="friends-recommand"></recommend>
+    <div class="main"
+         style="height: 1000px;">
+      <el-scrollbar style=" height: 100%;">
+        <div class="firstColunm">
+          <lperson class="leftperson"></lperson>
+          <list class="friends-list"></list>
+        </div>
+        <editor></editor>
+        <stream />
+
+        <recommend class="friends-recommand"></recommend>
+
+      </el-scrollbar>
+    </div>
+
   </div>
 </template>
 
@@ -31,10 +41,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.main {
+  position: relative;
+  .firstColunm {
+  }
+}
 .leftperson {
   float: left;
   position: relative;
-  top: -500px;
+  top: 0px;
 }
 .friends-list {
   float: left;

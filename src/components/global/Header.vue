@@ -76,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 .g-header {
   z-index: 5;
-  position: fixed;
+  position: relative;
   // min-width: 1190px;
   display: inline-block;
   top: 0;

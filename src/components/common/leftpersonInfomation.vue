@@ -30,7 +30,7 @@
 </template>
 <script>
 export default {
-  name: 'personInfomation.vue',
+
   data () {
     return {
       person:

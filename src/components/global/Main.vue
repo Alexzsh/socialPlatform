@@ -1,15 +1,24 @@
 <template>
   <div class="g-main">
-    aaaafffff
+
     <div class="g-main-wrapper">
-      <router-view />
+      <personalInfo />
     </div>
   </div>
 </template>
 
 <script>
+import personalInfo from '../pages/personalInfo'
 export default {
-  name: 'GlobalMain'
+  name: 'GlobalMain',
+  data () {
+    return {
+      num: 300
+    }
+  },
+  components: {
+    personalInfo: personalInfo
+  }
 }
 </script>
 
@@ -18,13 +27,13 @@ export default {
   width: 100%;
   // min-height: 100vh;
   z-index: 4;
-  position: fixed;
+  position: relative;
   // min-width: 1190px;
-  // display: inline-block;
+  display: inline-block;
 
   background: #fff;
   .g-main-wrapper {
-    width: 80%;
+    width: 100%;
     position: relative;
     margin: 0 auto;
   }

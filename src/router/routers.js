@@ -5,15 +5,16 @@ import fullText from '../components/common/fullText'
 import momentStream from '../components/common/momentStream'
 import notifyContent from '../components/common/notifyContent'
 import floatingWindow from '../components/common/floating_window'
-
+import index from '../components/pages/index'
 const routers = [{
   path: '/',
-  redirect: '/index'
+  redirect: '/login'
+
 },
 {
   path: '/index',
-  name: 'main-index',
-  component: PersonalInfo
+  name: 'index',
+  component: index
 },
 {
   path: '/PersonalInfo',
@@ -46,9 +47,22 @@ const routers = [{
   component: notifyContent
 },
 {
-  path: '/floating_window',
-  name: 'floating_window',
+  path: '/floatingWindow',
+  name: 'floatingWindow',
   component: floatingWindow
 }
 ]
 export default routers
+// routers.beforeEach((to, from, next) => {
+//   // 导航钩子，全局钩子
+
+//   if (!this.$store.state.islogin) {
+//     if (to.name !== 'Login') {
+//       next('/login')
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next()
+//   }
+// })
