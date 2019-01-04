@@ -3,7 +3,7 @@
            body-style="padding:0px">
     <a class="u-bgUserColor u-block"
        href="#"></a>
-    <div class="post">
+    <div class="lpost">
       <div class="person-header">
         <svg id="ficon"
              class="icon"
@@ -49,6 +49,8 @@ export default {
 <style scoped lang='scss'>
 .box-card {
   /*margin-bottom: 10px;*/
+  width:200px;
+  height: 180px;
   position: relative;
   .u-bgUserColor {
     background-color: #1da1f2 !important ;
