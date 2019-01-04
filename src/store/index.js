@@ -8,7 +8,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     islogin: false,
-    name: 'test',
+    name: 'zsh',
     headIcon: '22'
   },
   mutations: {

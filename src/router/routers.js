@@ -52,17 +52,5 @@ const routers = [{
   component: floatingWindow
 }
 ]
-export default routers
-// routers.beforeEach((to, from, next) => {
-//   // 导航钩子，全局钩子
 
-//   if (!this.$store.state.islogin) {
-//     if (to.name !== 'Login') {
-//       next('/login')
-//     } else {
-//       next()
-//     }
-//   } else {
-//     next()
-//   }
-// })
+export default routers

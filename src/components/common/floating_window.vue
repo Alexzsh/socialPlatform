@@ -12,8 +12,8 @@
                aria-hidden="true">
             <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
           </svg>
-          <div v-if="true">
-            <el-button type="danger"
+          <div class="fbtn" v-if="true">
+            <el-button type="danger" size="mini"
                        round
                        class="concern">已是好友</el-button>
           </div>
@@ -72,6 +72,8 @@ export default {
         }
     }
   },
+  // props
+
   computed: {
     isLike () {
       return function (index) {
@@ -81,47 +83,54 @@ export default {
   }
 }
 </script>
-<style scoped>
-.box-card {
-  width: 420px;
-  height: 320px;
-  margin-bottom: 10px;
-  position: relative;
-}
-.fu-bgUserColor {
-  background-color: #1da1f2 !important ;
-}
-.fu-block {
-  display: block !important;
-  height: 100px;
-  width: 100%;
-  padding: 0;
-}
-.fperson-name {
-  position: absolute;
-  left: 50px;
-  top: 185px;
-  font-weight: bold;
-  font-size: 28px;
-}
-.fperson-content {
-  font-size: 20px;
-  padding-top: 85px;
-  padding-left: 55px;
-}
-.concern {
-  margin-top: 20px;
-}
-.fpost {
-  width: 420px;
-}
-.fleft {
-  float: left;
-}
-#ficon {
-  width: 120px;
-  height: 120px;
-  margin: -45px 0 0 8px;
-  float: left;
-}
+<style scoped lang='scss'>
+  .box-card {
+    width: 200px;
+    height:180px;
+    position: relative;
+    .fu-bgUserColor {
+      background-color: #1da1f2 !important ;
+    }
+    .fu-block {
+      display: block !important;
+      height: 70px;
+      width: 100%;
+      padding: 0;
+    }
+    .fpost {
+      width: 100%;
+      .fperson-name {
+        position: absolute;
+        left:10px;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      .fbtn{
+        margin: 10px 0 10px 0;
+        .concern{
+          width:90px;
+          height: 25px;
+        }
+      }
+      .fperson-content {
+        font-size: 10px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        .fleft {
+          position: absolute;
+          left:20px;
+        }
+        .fright{
+          position: absolute;
+          left:95px;
+        }
+      }
+    }
+    #ficon {
+      width: 78px;
+      height: 78px;
+      margin: -40px 0 0 0;
+      float: left;
+    }
+  }
 </style>
