@@ -4,6 +4,7 @@
     <list class="friends-list"></list>
     <editor></editor>
     <stream />
+    <recommend class="friends-recommand"></recommend>
   </div>
 </template>
 
@@ -11,6 +12,8 @@
 import lperson from '../common/leftpersonInfomation'
 import editor from '../common/fullText'
 import stream from '../common/momentStream'
+import list from '../common/friendsList'
+import recommend from '../common/friendsRecommend'
 
 export default {
   data () {
@@ -20,7 +23,9 @@ export default {
   components: {
     editor: editor,
     stream: stream,
-    lperson: lperson
+    lperson: lperson,
+    list: list,
+    recommend: recommend
   }
 }
 </script>
