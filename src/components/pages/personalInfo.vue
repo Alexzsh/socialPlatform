@@ -9,18 +9,15 @@
 <script>
 import editor from '../common/fullText'
 import stream from '../common/momentStream'
-import friendsList from '../common/friendsList'
 
 export default {
   data () {
     return {
-
     }
   },
   components: {
     editor: editor,
-    stream: stream,
-    list: friendsList
+    stream: stream
   }
 }
 </script>
@@ -28,7 +25,13 @@ export default {
 <style lang="scss" scoped>
 .friends-list {
   float: left;
-  position: relative;
+  position: absolute;
   top: 300px;
+}
+
+.friends-recommand {
+  float: right;
+  position: relative;
+  top: -500px;
 }
 </style>

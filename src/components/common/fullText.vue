@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
 <template>
-
   <div class="post">
     <div class="circle left">
       <img src="https://hacks.mozilla.org/files/2017/06/firefox-logo.png"
            style="width:45px">
     </div>
-
     <div class="right">
 
       <div class="input">
@@ -18,7 +16,6 @@
                   :style="borderStyle">
 
         </el-input>
-
       </div>
       <div class="submit-line">
         <div v-if="clickInput"
@@ -168,7 +165,6 @@ export default {
   }
 }
 </script>
-
 <style scope lang='scss'>
 .post {
   display: inline-block;
