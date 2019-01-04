@@ -6,7 +6,6 @@
            style="width:45px">
     </div>
     <div class="right">
-
       <div class="input">
         <el-input type="textarea"
                   :rows="inputRows"
@@ -14,7 +13,6 @@
                   v-model="inputText"
                   @focus="inputGetFocus"
                   :style="borderStyle">
-
         </el-input>
       </div>
       <div class="submit-line">
@@ -51,7 +49,6 @@
   </div>
 
 </template>
-
 <script >
 import api from '../../api/api'
 import axioss from 'axios'

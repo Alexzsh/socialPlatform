@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--<lperson class="leftperson"></lperson>-->
+    <lperson class="leftperson"></lperson>
     <list class="friends-list"></list>
     <editor></editor>
     <stream />
@@ -34,7 +34,7 @@ export default {
 .leftperson {
   float: left;
   position: relative;
-  top: -500px;
+  top: 0px;
 }
 .friends-list {
   float: left;
