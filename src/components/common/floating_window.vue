@@ -32,7 +32,7 @@
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{person.likeList.length}}</span>
+              <span>{{person.moment.length}}</span>
             </div>
           </div>
         </div>
@@ -49,27 +49,56 @@ export default {
     return {
       myname: '小健',
       friendname: '大健10号',
-      person:
+      friends: [],
+      moments: [
         {
-          id: '2',
-          name: '小健8号',
-          iconId: '9',
-          momentCount: '5',
+          momentId: 139,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
           likeList: [
-            {
-              name: 'test1',
-              headIcon: '1'
-            },
-            {
-              name: 'test2',
-              headIcon: '2'
-            },
-            {
-              name: 'test3',
-              headIcon: '1'
-            }
+            'xxinsert1'
+          ]
+        },
+        {
+          momentId: 140,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1',
+            '大健4号'
+          ]
+        },
+        {
+          momentId: 142,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1',
+            '大健4号'
+          ]
+        },
+        {
+          momentId: 138,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            '小健8号',
+            'xxinsert1'
+          ]
+        },
+        {
+          momentId: 137,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            '大健4号',
+            '小健8号',
+            '小健7号',
+            'xxinsert1'
           ]
         }
+      ],
+      messages: []
     }
   },
   props: {
