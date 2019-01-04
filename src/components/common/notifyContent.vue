@@ -48,8 +48,6 @@ export default {
 }
 </script>
 <style scoped>
- {
-}
 </style>
 
 <!--<div v-for="notify in notifys" :key="notify.momentId">-->
