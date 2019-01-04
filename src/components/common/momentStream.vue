@@ -6,9 +6,10 @@
       <div class="stream-header">
         <el-popover
           placement="left"
-          trigger="hover">
+          trigger="manual"
+          v-model="moment.floatVisible">
           <floatwindow />
-          <div slot="reference">
+          <div slot="reference" @mouseover="requestUserMsg(index)" @mouseleave="closeFloat(index)">
             <svg class="icon head-icon" aria-hidden="true">
               <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>
             </svg>
@@ -67,6 +68,7 @@ export default {
           id: '1',
           userName: 'test',
           headIcon: '1',
+          floatVisible: false,
           releaseTime: '2018-12-20',
           content: 'The Democrats are trying to belittle the concept of a Wall, calling it old fashioned. The fact is there is nothing else’s that will work, and that has been true for thousands of years. It’s like the wheel, there is nothing better. I know tech better than anyone, & technology.....',
           // pictureUrl: 'https://hacks.mozilla.org/files/2017/06/firefox-logo.png',
@@ -89,6 +91,7 @@ export default {
           id: '2',
           userName: 'test2',
           headIcon: '2',
+          floatVisible: false,
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
@@ -111,6 +114,7 @@ export default {
           id: '2',
           userName: 'test2',
           headIcon: '2',
+          floatVisible: false,
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
@@ -133,6 +137,7 @@ export default {
           id: '2',
           userName: 'test2',
           headIcon: '2',
+          floatVisible: false,
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
@@ -155,6 +160,7 @@ export default {
           id: '2',
           userName: 'test2',
           headIcon: '2',
+          floatVisible: false,
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
@@ -177,6 +183,7 @@ export default {
           id: '2',
           userName: 'test2',
           headIcon: '2',
+          floatVisible: false,
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
@@ -199,6 +206,7 @@ export default {
           id: '2',
           userName: 'test2',
           headIcon: '2',
+          floatVisible: false,
           releaseTime: '2018-12-21',
           content: '【萌寵版交通公益廣告爆紅】近日，廣東交通頻道發布一則交通公益廣告視頻。與以往交通公益廣告不同的是，這條廣告的主角都是“萌寵”，用狗狗的視頻剪輯加上配音，來闡釋“超載、追尾、分心、超速、疲勞駕駛”，提醒大家遵守交通規則。網友：追尾那個有點慘',
           pictureUrl: '',
@@ -247,6 +255,12 @@ export default {
       } else {
         this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
       }
+    },
+    requestUserMsg: function (index) {
+      this.moments[index].floatVisible = true
+    },
+    closeFloat: function (index) {
+      this.moments[index].floatVisible = false
     }
   },
   computed: {

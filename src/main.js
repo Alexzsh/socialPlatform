@@ -6,9 +6,7 @@ import App from './App'
 import routers from './router/routers'
 import utils from './utils'
 import store from './store'
-import ElementUI, {
-  Message
-} from 'element-ui'
+import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 // import upperFirst from 'lodash/upperFirst'
@@ -27,15 +25,11 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   // 模拟登陆状态
-  let isLogin = store.state.islogin
-  // let isLogin = false
+  // let isLogin = this.$store.state.islogin
+  let isLogin = false
   if (!isLogin) {
     if (to.path !== '/login') {
-      // alert('要先登录哦~🤣')
-      Message({
-        showClose: true,
-        message: '要先登录哦~🤣'
-      })
+      alert('要先登录哦~🤣')
       return next({
         path: '/login'
       })
