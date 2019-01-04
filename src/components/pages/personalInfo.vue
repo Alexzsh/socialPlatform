@@ -53,11 +53,11 @@ export default {
     .firstColunm {
       float: left;
       // display: inline-block;
-      position: relative;
-      width: 200px;
+      // position: relative;
+      // width: 200px;
       .leftperson {
         margin-bottom: 20px;
-        height: 180px;
+        // height: 180px;
         // left: 20%;
       }
       .friends-list {

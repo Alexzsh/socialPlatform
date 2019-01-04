@@ -49,12 +49,8 @@ export default {
 <style scoped lang='scss'>
 .box-card {
   /*margin-bottom: 10px;*/
-<<<<<<< HEAD
-
-=======
-  width:200px;
-  height: 180px;
->>>>>>> 6b6a7407be1b0dfbe5ad253294e2613e8c6ada3d
+  width: 200px;
+  height: 200px;
   position: relative;
   .u-bgUserColor {
     background-color: #1da1f2 !important ;
