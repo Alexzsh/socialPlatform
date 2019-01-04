@@ -10,7 +10,7 @@
           <svg id="ficon"
                class="icon"
                aria-hidden="true">
-            <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
+            <use :xlink:href="'#favicon-default'+(iconId)"></use>
           </svg>
           <div class="fbtn" >
             <el-button type="danger" size="mini" v-if="hover"
@@ -23,16 +23,16 @@
         </div>
         <div class="fperson-text">
           <div class="fperson-name">
-            <a class="fperson-u">@{{person.name}}</a>
+            <a class="fperson-u">@{{friendname}}</a>
           </div>
           <div class="fperson-content">
             <div class="fleft">
               <span><strong>动态</strong></span>
-              <span> {{ person.momentCount }}</span>
+              <span> {{friends.length}}</span>
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{person.moment.length}}</span>
+              <span>{{moments.length}}</span>
             </div>
           </div>
         </div>
@@ -49,7 +49,8 @@ export default {
     return {
       myname: '小健',
       friendname: '大健10号',
-      friends: [],
+      friends: ['5'],
+      iconId: '9',
       moments: [
         {
           momentId: 139,
