@@ -3,15 +3,19 @@
     <div class="main"
          style="height: 1000px;">
       <el-scrollbar style=" height: 100%;">
-        <div class="firstColunm">
-          <lperson class="leftperson"></lperson>
-          <list class="friends-list"></list>
+        <div class="all">
+          <div class="firstColunm">
+            <lperson class="leftperson"></lperson>
+            <list class="friends-list"></list>
+          </div>
+          <div class="secondColunm">
+            <editor></editor>
+            <stream />
+          </div>
+          <div class="thirdColunm">
+            <recommend class="friends-recommand"></recommend>
+          </div>
         </div>
-        <editor></editor>
-        <stream />
-
-        <recommend class="friends-recommand"></recommend>
-
       </el-scrollbar>
     </div>
 
@@ -43,26 +47,32 @@ export default {
 <style lang="scss" scoped>
 .main {
   position: relative;
-  .firstColunm {
+  .all {
     display: inline-block;
-    position: relative;
-    left: 45px;
+    margin-top: 10px;
+    .firstColunm {
+      float: left;
+      // display: inline-block;
+      position: relative;
+      width: 200px;
+      .leftperson {
+        margin-bottom: 20px;
+        // left: 20%;
+      }
+      .friends-list {
+        margin-bottom: 20px;
+        // left: 20%;
+      }
+    }
+    .secondColunm {
+      display: inline-block;
+      position: relative;
+    }
+    .thirdColunm {
+      // display: inline-block;
+      float: right;
+      position: relative;
+    }
   }
-}
-.leftperson {
-  float: left;
-  position: relative;
-  top: 0px;
-}
-.friends-list {
-  float: left;
-  position: absolute;
-  top: 300px;
-}
-
-.friends-recommand {
-  float: right;
-  position: relative;
-  top: -500px;
 }
 </style>

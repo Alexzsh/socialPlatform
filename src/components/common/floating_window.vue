@@ -1,6 +1,8 @@
 <template>
   <div class="float_windows">
-    <el-card class="box-card">
+    <el-card class="box-card"
+             body-style="padding:0px;border:none;"
+             shadow="never">
       <a class="fu-bgUserColor fu-block"
          href="#"></a>
       <div class="fpost">

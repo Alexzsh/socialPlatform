@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 #friends-list {
-  width: 200px;
+  // width: 200px;
 }
 
 .friend-list {

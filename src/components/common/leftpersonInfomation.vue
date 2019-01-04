@@ -1,5 +1,6 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="box-card"
+           body-style="padding:0px">
     <a class="u-bgUserColor u-block"
        href="#"></a>
     <div class="post">
@@ -47,8 +48,6 @@ export default {
 </script>
 <style scoped>
 .box-card {
-  width: 200px;
-  height: 200px;
   /*margin-bottom: 10px;*/
   position: relative;
 }
