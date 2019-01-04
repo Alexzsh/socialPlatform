@@ -44,6 +44,9 @@ export default {
 .main {
   position: relative;
   .firstColunm {
+    display: inline-block;
+    position: relative;
+    left: 45px;
   }
 }
 .leftperson {

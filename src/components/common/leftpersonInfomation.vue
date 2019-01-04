@@ -12,7 +12,7 @@
       </div>
       <div class="person-text">
         <div class="person-name">
-          <a class="person-u">{{person.userName}}</a>
+          <a class="person-u">@{{person.userName}}</a>
         </div>
         <div class="person-content">
           <div class="pleft">
@@ -47,9 +47,9 @@ export default {
 </script>
 <style scoped>
 .box-card {
-  width: 420px;
-  height: 280px;
-  margin-bottom: 10px;
+  width: 200px;
+  height: 200px;
+  /*margin-bottom: 10px;*/
   position: relative;
 }
 .u-bgUserColor {
@@ -57,33 +57,38 @@ export default {
 }
 .u-block {
   display: block !important;
-  height: 140px;
+  height: 70px;
   width: 100%;
   padding: 0;
 }
 .person-name {
   position: absolute;
   width: 185px;
-  left: 85px;
-  top: 145px;
+  left: 45px;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 20px;
 }
 .person-content {
-  font-size: 20px;
+  font-size: 14px;
   padding-top: 70px;
-  padding-left: 55px;
+  padding-left: 0px;
 }
 .post {
-  width: 398px;
+  width: 100%;
 }
 .pleft {
   float: left;
+  padding-left: 10px;
+}
+.pright {
+  float: left;
+  padding-left: 35px;
+  /*padding-right: 10px;*/
 }
 #ficon {
-  width: 120px;
-  height: 120px;
-  margin: -70px 0 0 8px;
+  width: 78px;
+  height: 78px;
+  margin: -40px 0 0 0;
   float: left;
 }
 </style>
