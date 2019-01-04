@@ -24,8 +24,7 @@
                ref="ruleForm"
                label-width="100px"
                class="demo-ruleForm">
-        <el-form-item label="性别"
-                      prop="sex">
+        <el-form-item label="性别">
           <el-radio class="radio" v-model="ruleForm.sex" label="男">男</el-radio>
           <el-radio class="radio" v-model="ruleForm.sex" label="女">女</el-radio>
         </el-form-item>
@@ -86,43 +85,47 @@ export default {
       if (value === '') {
         return callback(new Error('姓名不能为空'))
       } else {
-        if (this.ruleForm.checkName !== '') {
+        if (this.ruleForm.name !== '') {
           this.$refs.ruleForm.validateField('checkName')
         }
+        callback()
       }
     }
     var checkSex = (rule, value, callback) => {
       if (value === '') {
         return callback(new Error('性别不能为空'))
       } else {
-        if (this.ruleForm.checkSex !== '') {
+        if (this.ruleForm.sex !== '') {
           this.$refs.ruleForm.validateField('checkSex')
         }
+        callback()
       }
     }
     var checkClassName = (rule, value, callback) => {
       if (value === '') {
         return callback(new Error('班级不能为空'))
       } else {
-        if (this.ruleForm.checkClassName !== '') {
+        if (this.ruleForm.className !== '') {
           this.$refs.ruleForm.validateField('checkClassName')
         }
+        callback()
       }
     }
     var checkEmail = (rule, value, callback) => {
       if (value === '') {
         return callback(new Error('邮箱不能为空'))
       } else {
-        if (this.ruleForm.checkEmail !== '') {
+        if (this.ruleForm.email !== '') {
           this.$refs.ruleForm.validateField('checkClassName')
         }
+        callback()
       }
     }
     var validatePass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
       } else {
-        if (this.ruleForm.checkPass !== '') {
+        if (this.ruleForm.pass !== '') {
           this.$refs.ruleForm.validateField('checkPass')
         }
         callback()
@@ -193,7 +196,7 @@ export default {
             classNumber: this.ruleForm.className,
             captha: this.verificationCode
           }).then(re => {
-            console.log('success', e)
+            console.log('success', re)
           }).catch(e => {
             console.log('loginError', e)
           })
