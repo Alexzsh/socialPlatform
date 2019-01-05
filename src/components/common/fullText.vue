@@ -132,10 +132,16 @@ export default {
       })
     },
     submitWholePost () {
+      if (this.inputText === '' && this.pictureUrl === '') this.$message.error('不加点内容嘛🙇🏻‍♂️')
       api.addMoment({ name: 'zsh', moment: { 'content': this.inputText, 'pictureUrl': this.pictureUrl, 'likeList': null } }).then(re => {
         console.log('addMomentSuccess', re)
+        this.inputRows = '2'
+        this.$message.info('发送成功咯~')
+        this.inputText = ''
+        this.pictureUrl = ''
       }).catch(e => {
         console.log('addMomentError', e)
+        this.$message.error('服务器开了会小差~请重新发送哦')
       })
     },
 

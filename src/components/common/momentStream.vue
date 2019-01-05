@@ -4,12 +4,12 @@
          :key="index"
          class="moment-content">
       <div class="stream-header">
-        <el-popover
-          placement="left"
-          trigger="hover">
+        <el-popover placement="left"
+                    trigger="hover">
           <floatwindow />
           <div slot="reference">
-            <svg class="icon head-icon" aria-hidden="true">
+            <svg class="icon head-icon"
+                 aria-hidden="true">
               <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>
             </svg>
           </div>

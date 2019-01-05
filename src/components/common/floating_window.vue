@@ -12,8 +12,10 @@
                aria-hidden="true">
             <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
           </svg>
-          <div class="fbtn" v-if="true">
-            <el-button type="danger" size="mini"
+          <div class="fbtn"
+               v-if="true">
+            <el-button type="danger"
+                       size="mini"
                        round
                        class="concern">已是好友</el-button>
           </div>
@@ -34,7 +36,7 @@
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{person.likeList.length}}</span>
+              <span>{{person.friendCount}}</span>
             </div>
           </div>
         </div>
@@ -44,6 +46,9 @@
 </template>
 
 <script>
+import api from '../../api/api'
+// import axioss from 'axios'
+// import qs from 'qs'
 export default {
   name: 'floating_window',
   data () {
@@ -53,27 +58,34 @@ export default {
           id: '2',
           name: '小健8号',
           iconId: '9',
-          momentCount: '5',
-          likeList: [
-            {
-              name: 'test1',
-              headIcon: '1'
-            },
-            {
-              name: 'test2',
-              headIcon: '2'
-            },
-            {
-              name: 'test3',
-              headIcon: '1'
-            }
-          ],
+          momentCount: '0',
+          friendCount: '0',
           followeeNum: '20'
         }
     }
   },
   // props
-
+  beforeMount: function () {
+    // const data = { myname: '小健', friendname: '小健8号' }
+    // const options = {
+    //   method: 'GET',
+    //   headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+    //   data: qs.stringify(data),
+    //   url: 'http://139.199.221.89:8083/person/viewFriendInformation'
+    // }
+    // axioss(options)
+    // const params = new URLSearchParams()
+    // params.append('myname', '小健')
+    // params.append('friendname', '小健8号')
+    // axioss.get('http://139.199.221.89:8083/person/viewFriendInformation', params, Headers = {}).then(res => {
+    //   console.log(res)
+    // })
+    api.viewFriendInformation({ myname: '小健', friendname: '小健8号' }).then(res => {
+      console.log(res)
+      this.person.friendCount = res.data.friends.length
+      this.person.momentCount = res.data.moments.length
+    })
+  },
   computed: {
     isLike () {
       return function (index) {
@@ -84,53 +96,53 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-  .box-card {
-    width: 200px;
-    height:180px;
-    position: relative;
-    .fu-bgUserColor {
-      background-color: #1da1f2 !important ;
+.box-card {
+  width: 200px;
+  height: 180px;
+  position: relative;
+  .fu-bgUserColor {
+    background-color: #1da1f2 !important ;
+  }
+  .fu-block {
+    display: block !important;
+    height: 70px;
+    width: 100%;
+    padding: 0;
+  }
+  .fpost {
+    width: 100%;
+    .fperson-name {
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      font-size: 15px;
     }
-    .fu-block {
-      display: block !important;
-      height: 70px;
-      width: 100%;
-      padding: 0;
+    .fbtn {
+      margin: 10px 0 10px 0;
+      .concern {
+        width: 90px;
+        height: 25px;
+      }
     }
-    .fpost {
-      width: 100%;
-      .fperson-name {
+    .fperson-content {
+      font-size: 10px;
+      padding-top: 30px;
+      padding-bottom: 10px;
+      .fleft {
         position: absolute;
-        left:10px;
-        font-weight: bold;
-        font-size: 15px;
+        left: 20px;
       }
-      .fbtn{
-        margin: 10px 0 10px 0;
-        .concern{
-          width:90px;
-          height: 25px;
-        }
+      .fright {
+        position: absolute;
+        left: 95px;
       }
-      .fperson-content {
-        font-size: 10px;
-        padding-top: 30px;
-        padding-bottom: 10px;
-        .fleft {
-          position: absolute;
-          left:20px;
-        }
-        .fright{
-          position: absolute;
-          left:95px;
-        }
-      }
-    }
-    #ficon {
-      width: 78px;
-      height: 78px;
-      margin: -40px 0 0 0;
-      float: left;
     }
   }
+  #ficon {
+    width: 78px;
+    height: 78px;
+    margin: -40px 0 0 0;
+    float: left;
+  }
+}
 </style>
