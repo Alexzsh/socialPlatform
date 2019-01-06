@@ -27,8 +27,8 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   // 模拟登陆状态
-  console.log('judge route', store.state, JSON.parse(window.localStorage.getItem('state')))
-  let isLogin = JSON.parse(window.localStorage.getItem('state'))['islogin']
+
+  let isLogin = window.localStorage.getItem('state') ? JSON.parse(window.localStorage.getItem('state'))['islogin'] : false
   // let isLogin = false
   if (!isLogin) {
     if (to.path !== '/login' && to.path !== '/logout') {

@@ -29,8 +29,7 @@
            @click="changeRoute('/index')">
         <img :src="require('@/assets/logo.png')"
              width="24px"
-             height="21px"
-             style="text-align: center;margin-top:12px">
+             height="21px">
         <!--<p style="line-height: 60px; text-align: center;">LOGO</p>-->
       </div>
       <div class="g-nav-right">
@@ -102,7 +101,7 @@ export default {
   height: 46px;
   box-shadow: 0 1px 5px #999999;
   .g-header-wrapper {
-    width: 80%;
+    width: 65%;
     position: relative;
     margin: 0 auto;
   }
@@ -111,12 +110,15 @@ export default {
     width: 150px;
     height: 100%;
     display: inline-block;
+    margin-top: 12px;
+    margin-left: 12px;
+    text-align: center;
   }
 
   .g-nav-left {
-    // display: inline-block;
-    position: absolute;
-    left: 0;
+    display: inline-block;
+
+    float: left;
 
     .item {
       margin-top: -30px;
@@ -137,9 +139,9 @@ export default {
     }
   }
   .g-nav-right {
+    display: inline-block;
     width: 150px;
     float: right;
-
     margin-top: 3px;
     .head-icon {
       float: left;
