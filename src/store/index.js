@@ -212,6 +212,9 @@ const store = new Vuex.Store({
     },
     setName (state, name) {
       state.name = name
+    },
+    setHeadIcon (state, headIcon) {
+      state.headIcon = headIcon
     }
   }
 })

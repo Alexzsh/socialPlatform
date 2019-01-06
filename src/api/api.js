@@ -22,6 +22,10 @@ const apiDes = [{
   method: 'post',
   params: ['name', 'password']
 }, {
+  fun: 'logout',
+  url: 'logout',
+  method: 'post'
+}, {
   fun: 'getMessages',
   url: 'message/getMessages',
   method: 'post',

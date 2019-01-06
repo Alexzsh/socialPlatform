@@ -27,10 +27,11 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   // 模拟登陆状态
-  let isLogin = store.state.islogin
+  console.log('judge route', store.state, JSON.parse(window.localStorage.getItem('state')))
+  let isLogin = JSON.parse(window.localStorage.getItem('state'))['islogin']
   // let isLogin = false
   if (!isLogin) {
-    if (to.path !== '/login') {
+    if (to.path !== '/login' && to.path !== '/logout') {
       // alert('要先登录哦~🤣')
       Message({
         showClose: true,
@@ -43,10 +44,8 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
-    if (to.path === '/login') {
-      return next({
-        path: '/'
-      })
+    if (to.path === '/login' || to.path === 'logout') {
+      return next('/')
     }
     next()
   }

@@ -21,6 +21,12 @@ export default {
       this.$router.push(path)
     },
     beforeCreate () {
+
+    },
+    created () {
+      let state = JSON.parse(window.localStorage.getItem('state'))
+      this.$store.replaceState(state)
+      console.log('state', state)
       if (this.isLogin === false) { this.$router.push('/login') }
     }
   }
