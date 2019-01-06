@@ -12,12 +12,16 @@
             <i class="el-icon-tickets"></i>
             <a href="#/index">首 页</a>
           </el-menu-item>
-          <el-menu-item index="2">
+          <el-menu-item index="2"
+                        style="">
             <i class="el-icon-bell"></i>
             <el-badge :value="2"
                       class="item">
             </el-badge>
-            <notifyContent class="notify" />
+            <!-- <a href="#/index">通 知</a> -->
+            <div class="notify">
+              <notifyContent />
+            </div>
           </el-menu-item>
         </el-menu>
       </div>
@@ -112,16 +116,17 @@ export default {
       margin-top: -30px;
       margin-left: -20px;
     }
-    .notify {
-      position: relative;
-      top: -45px;
-      left: 25px;
-    }
+
     .el-menu--horizontal {
       border-bottom: none;
       .el-menu-item {
         height: 46px;
         line-height: 46px;
+        .notify {
+          float: right;
+          top: -45px;
+          left: 25px;
+        }
       }
     }
   }
