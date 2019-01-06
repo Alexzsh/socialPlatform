@@ -17,7 +17,7 @@
         </el-popover>
         <div class="header-text">
           <span><strong>@{{ moment.userName }}</strong></span>
-          <span> · {{ moment.releaseTime }}</span>
+          <span class="release-time"> · {{ moment.releaseTime }}</span>
         </div>
       </div>
       <div class="stream-body">
@@ -74,7 +74,7 @@ export default {
   created () {
     api.viewAllRepositoryMoments().then(re => {
       let moments = []
-      let returnData = re.data
+      let returnData = re.data.data
       console.log('-----------------')
       console.log(returnData)
       returnData.forEach((item) => {
@@ -167,6 +167,10 @@ export default {
       span {
         display: inline-block;
         width: 80px;
+      }
+
+      .release-time {
+        width: 150px;
       }
     }
   }
