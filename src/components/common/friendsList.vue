@@ -60,6 +60,7 @@ export default {
         let returnData = re.data
         returnData.moments.forEach((moment) => {
           moments.push({
+            'id': moment.momentId,
             'userName': returnData.name,
             'headIcon': '5',
             'floatVisible': false,

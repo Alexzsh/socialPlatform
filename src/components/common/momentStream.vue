@@ -75,10 +75,9 @@ export default {
     api.viewAllRepositoryMoments().then(re => {
       let moments = []
       let returnData = re.data.data
-      console.log('-----------------')
-      console.log(returnData)
       returnData.forEach((item) => {
         moments.push({
+          'id': item.momentId,
           'userName': item.name,
           'headIcon': '5',
           'floatVisible': false,
@@ -111,9 +110,23 @@ export default {
     },
     addLike: function (index) {
       if (this.inArray(this.moments[index].likeList, this.name)) {
-        this.removeItem(this.moments[index].likeList, this.name)
+        api.addLike({
+          name: this.$store.state.name,
+          id: this.$store.state.momentStream[index].id
+        }).then(re => {
+          if (re.data.code === 0) {
+            this.removeItem(this.moments[index].likeList, this.name)
+          }
+        })
       } else {
-        this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
+        api.addLike({
+          name: this.$store.state.name,
+          id: this.$store.state.momentStream[index].id
+        }).then(re => {
+          if (re.data.code === 0) {
+            this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
+          }
+        })
       }
     },
     requestUserMsg: function (index) {

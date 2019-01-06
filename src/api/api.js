@@ -45,6 +45,11 @@ const apiDes = [{
   url: 'person/recommend',
   method: 'post',
   params: ['name']
+}, {
+  fun: 'addLike',
+  url: 'message/addLike',
+  method: 'post',
+  params: ['name', 'id']
 }]
 
 // 由接口描述生成接口调用函数
