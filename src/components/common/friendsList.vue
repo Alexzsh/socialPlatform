@@ -1,19 +1,21 @@
 <template>
   <div id="friends-list">
     <div class="header">
-      <span><strong>好友列表</strong></span>
+      <span><strong>好坋列表</strong></span>
     </div>
     <div v-for="(friend, index) in friends"
          :key="index"
          class="friend-list"
          @click="showMomentStream(index)">
-      <el-popover
-        placement="left-start"
-        trigger="hover"
-        v-model="friend.floatVisible">
+      <el-popover placement="left-start"
+                  trigger="hover"
+                  v-model="friend.floatVisible">
         <floatwindow />
-        <div slot="reference" @mouseover="requestUserMsg(index)" @mouseleave="closeFloat(index)">
-          <svg class="icon head-icon" aria-hidden="true">
+        <div slot="reference"
+             @mouseover="requestUserMsg(index)"
+             @mouseleave="closeFloat(index)">
+          <svg class="icon head-icon"
+               aria-hidden="true">
             <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
           </svg>
         </div>
@@ -49,6 +51,7 @@ export default {
       this.friends[index].floatVisible = false
     },
     showMomentStream: function (index) {
+      console.log('clicked')
       api.viewFriendInformation({
         myname: this.name,
         friendname: this.friends[index].name
