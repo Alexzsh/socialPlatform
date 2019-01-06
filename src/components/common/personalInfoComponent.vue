@@ -139,4 +139,41 @@ export default {
   position: relative;
   left: -50px;
 }
+#login-component {
+  width: 400px;
+  display: block;
+  margin: auto;
+}
+
+.input {
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 2em;
+}
+
+p {
+  margin: -10px auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+p:hover {
+  text-decoration: underline;
+}
+
+.regist-input {
+  width: 300px;
+  margin: 10px;
+  margin-left: -100px;
+  border-radius: 2em;
+}
+
+.veri-code-input {
+  width: 200px;
+  float: left;
+}
+
+.radio {
+  width: 150px;
+}
 </style>

@@ -5,6 +5,7 @@
     <el-dialog title="通知信息"
                :visible.sync="dialogTableVisible"
                width="40%"
+               :modal='false'
                top="10vh">
       <el-table :data="notifys">
         <el-table-column property="nameList.length"
