@@ -68,6 +68,8 @@ export default {
     .secondColunm {
       display: inline-block;
       position: relative;
+      padding-left: 35px;
+      padding-right: 40px;
     }
     .thirdColunm {
       // display: inline-block;
