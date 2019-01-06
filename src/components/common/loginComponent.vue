@@ -213,6 +213,7 @@ export default {
       api.login({ name: this.userName, password: this.pwd }).then(re => {
         let userData = re.data
         if (userData.code === 0) {
+          this.$store.commit('setName', this.userName)
           this.$store.commit('login')
           this.$router.push('/index')
         } else if (userData.code === 1) {

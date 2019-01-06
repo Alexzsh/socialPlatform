@@ -40,6 +40,11 @@ const apiDes = [{
   url: 'person/viewFriendInformation',
   method: 'post',
   params: ['myname', 'friendname']
+}, {
+  fun: 'getFriendsRecommend',
+  url: 'person/recommend',
+  method: 'post',
+  params: ['name']
 }]
 
 // 由接口描述生成接口调用函数
