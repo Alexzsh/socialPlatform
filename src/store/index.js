@@ -8,8 +8,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     islogin: false,
-    name: 'test',
-    headIcon: '22'
+    name: '',
+    headIcon: ''
   },
   mutations: {
     login (state) {

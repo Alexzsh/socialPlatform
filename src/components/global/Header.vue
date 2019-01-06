@@ -12,12 +12,16 @@
             <i class="el-icon-tickets"></i>
             <a href="#/index">首 页</a>
           </el-menu-item>
-          <el-menu-item index="2">
+          <el-menu-item index="2"
+                        style="">
             <i class="el-icon-bell"></i>
             <el-badge :value="2"
                       class="item">
             </el-badge>
-            <a href="#/index">通 知</a>
+            <!-- <a href="#/index">通 知</a> -->
+            <div class="notify">
+              <notifyContent />
+            </div>
           </el-menu-item>
         </el-menu>
       </div>
@@ -43,6 +47,7 @@
         <div class="g-nav-logout"
              v-on:click="logout">
           <el-button type="primary"
+                     @click="logout"
                      round>登出</el-button>
         </div>
       </div>
@@ -52,9 +57,14 @@
 
 <script>
 // import api from '../../api/api'
+import notifyContent from '../common/notifyContent'
+import api from '../../api/api'
 export default {
   /* eslint-disable */
   name: 'global-header',
+  components: {
+    notifyContent: notifyContent
+  },
   data () {
     return {
       activeIndex: "1"
@@ -66,8 +76,14 @@ export default {
       this.$router.push(path)
     },
     logout () {
-      this.$store.islogin = false
-      console.log('logout', this.$store.islogin)
+      api.logout().then(res => {
+        console.log('logout', res)
+      })
+      let state = { islogin: false, name: '', headIcon: '' }
+      this.$store.replaceState(state)
+      window.localStorage.setItem('state', JSON.stringify(state))
+      console.log('logout', this.$store.state)
+      this.$router.push('/login')
     }
   },
 }
@@ -112,6 +128,11 @@ export default {
       .el-menu-item {
         height: 46px;
         line-height: 46px;
+        .notify {
+          float: right;
+          top: -45px;
+          left: 25px;
+        }
       }
     }
   }

@@ -6,7 +6,9 @@ import App from './App'
 import routers from './router/routers'
 import utils from './utils'
 import store from './store'
-import ElementUI from 'element-ui'
+import ElementUI, {
+  Message
+} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 // import upperFirst from 'lodash/upperFirst'
@@ -23,7 +25,31 @@ const router = new Router({
   // mode: 'history',
   routes: routers
 })
-
+router.beforeEach((to, from, next) => {
+  // 模拟登陆状态
+  console.log('judge route', store.state, JSON.parse(window.localStorage.getItem('state')))
+  let isLogin = JSON.parse(window.localStorage.getItem('state'))['islogin']
+  // let isLogin = false
+  if (!isLogin) {
+    if (to.path !== '/login' && to.path !== '/logout') {
+      // alert('要先登录哦~🤣')
+      Message({
+        showClose: true,
+        message: '要先登录哦~🤣'
+      })
+      return next({
+        path: '/login'
+      })
+    } else {
+      next()
+    }
+  } else {
+    if (to.path === '/login' || to.path === 'logout') {
+      return next('/')
+    }
+    next()
+  }
+})
 Vue.prototype.$utils = utils
 /* eslint-disable no-new */
 new Vue({

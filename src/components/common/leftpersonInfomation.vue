@@ -31,7 +31,7 @@
 </template>
 <script>
 export default {
-  name: 'personInfomation.vue',
+
   data () {
     return {
       person:
@@ -47,43 +47,43 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-  .box-card {
-    width: 200px;
-    height:180px;
-    position: relative;
-    .u-bgUserColor {
-      background-color: #1da1f2 !important ;
+.box-card {
+  width: 200px;
+  height: 180px;
+  position: relative;
+  .u-bgUserColor {
+    background-color: #1da1f2 !important ;
+  }
+  .u-block {
+    display: block !important;
+    height: 70px;
+    width: 100%;
+    padding: 0;
+  }
+  .lpost {
+    width: 100%;
+    .person-name {
+      font-weight: bold;
+      font-size: 20px;
     }
-    .u-block {
-      display: block !important;
-      height: 70px;
-      width: 100%;
-      padding: 0;
-    }
-    .lpost {
-      width: 100%;
-      .person-name {
-        font-weight: bold;
-        font-size: 20px;
+    .person-content {
+      font-size: 14px;
+      padding-top: 25px;
+      .pleft {
+        position: absolute;
+        left: 20px;
       }
-      .person-content {
-        font-size: 14px;
-        padding-top: 25px;
-        .pleft {
-          position: absolute;
-          left:20px;
-        }
-        .pright{
-          position: absolute;
-          left:95px;
-        }
+      .pright {
+        position: absolute;
+        left: 95px;
       }
-    }
-    #ficon {
-      width: 78px;
-      height: 78px;
-      margin: -40px 0 0 0;
-      float: left;
     }
   }
+  #ficon {
+    width: 78px;
+    height: 78px;
+    margin: -40px 0 0 0;
+    float: left;
+  }
+}
 </style>

@@ -12,27 +12,29 @@
                aria-hidden="true">
             <use :xlink:href="'#favicon-default'+(iconId)"></use>
           </svg>
-          <div class="fbtn" >
-            <el-button type="danger" size="mini" v-if="hover"
+          <div class="fbtn" v-if="true">
+            <el-button type="danger" size="mini"
                        round
                        class="concern">已是好友</el-button>
-            <el-button type="danger" size="mini" v-else
+          </div>
+          <div v-else>
+            <el-button type="danger"
                        round
                        class="concern" @click="addFriend">添加好友</el-button>
           </div>
         </div>
         <div class="fperson-text">
           <div class="fperson-name">
-            <a class="fperson-u">@{{friendname}}</a>
+            <a class="fperson-u">@{{person.name}}</a>
           </div>
           <div class="fperson-content">
             <div class="fleft">
               <span><strong>动态</strong></span>
-              <span> {{friends.length}}</span>
+              <span> {{ person.momentCount }}</span>
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{moments.length}}</span>
+              <span>{{person.likeList.length}}</span>
             </div>
           </div>
         </div>
@@ -42,76 +44,41 @@
 </template>
 
 <script>
-import api from '../../api/api'
 export default {
   name: 'floating_window',
   data () {
     return {
-      myname: '小健',
-      friendname: '大健10号',
-      friends: ['5'],
-      iconId: '9',
-      moments: [
+      person:
         {
-          momentId: 139,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
+          id: '2',
+          name: '小健8号',
+          iconId: '9',
+          momentCount: '5',
           likeList: [
-            'xxinsert1'
-          ]
-        },
-        {
-          momentId: 140,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            'xxinsert1',
-            '大健4号'
-          ]
-        },
-        {
-          momentId: 142,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            'xxinsert1',
-            '大健4号'
-          ]
-        },
-        {
-          momentId: 138,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            '小健8号',
-            'xxinsert1'
-          ]
-        },
-        {
-          momentId: 137,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            '大健4号',
-            '小健8号',
-            '小健7号',
-            'xxinsert1'
-          ]
+            {
+              name: 'test1',
+              headIcon: '1'
+            },
+            {
+              name: 'test2',
+              headIcon: '2'
+            },
+            {
+              name: 'test3',
+              headIcon: '1'
+            }
+          ],
+          followeeNum: '20'
         }
-      ],
-      messages: []
     }
   },
-  props: {
-    hover: false
-  },
-  methods: {
-    addFriend () {
-      api.addfriend({myname: this.myname, friendname: this.friendname}).then(re => {
-        console.log('getMessagesSuccess', re)
-      }).catch(e => {
-        console.log('getMessagesError', e)
-      })
+  // props
+
+  computed: {
+    isLike () {
+      return function (index) {
+        return this.inArray(this.moments[index].likeList, this.name)
+      }
     }
   }
 }
