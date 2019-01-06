@@ -25,8 +25,12 @@
                label-width="100px"
                class="demo-ruleForm">
         <el-form-item label="性别">
-          <el-radio class="radio" v-model="ruleForm.sex" label="男">男</el-radio>
-          <el-radio class="radio" v-model="ruleForm.sex" label="女">女</el-radio>
+          <el-radio class="radio"
+                    v-model="ruleForm.sex"
+                    label="男">男</el-radio>
+          <el-radio class="radio"
+                    v-model="ruleForm.sex"
+                    label="女">女</el-radio>
         </el-form-item>
         <el-form-item label="姓名"
                       prop="name">
@@ -213,7 +217,10 @@ export default {
       api.login({ name: this.userName, password: this.pwd }).then(re => {
         let userData = re.data
         if (userData.code === 0) {
-          this.$store.commit('login')
+          let state = { islogin: true, name: this.userName, headIcon: '1' }
+          this.$store.replaceState(state)
+          window.localStorage.setItem('state', JSON.stringify(state))
+          console.log(JSON.parse(window.localStorage.getItem('state')), this.$store.state)
           this.$router.push('/index')
         } else if (userData.code === 1) {
           this.$message.error('账号或密码错误！')

@@ -58,6 +58,7 @@
 <script>
 // import api from '../../api/api'
 import notifyContent from '../common/notifyContent'
+import api from '../../api/api'
 export default {
   /* eslint-disable */
   name: 'global-header',
@@ -75,8 +76,13 @@ export default {
       this.$router.push(path)
     },
     logout () {
-      this.$store.state.islogin = false
-      console.log('logout', this.$store.state.islogin)
+      api.logout().then(res => {
+        console.log('logout', res)
+      })
+      let state = { islogin: false, name: '', headIcon: '' }
+      this.$store.replaceState(state)
+      window.localStorage.setItem('state', JSON.stringify(state))
+      console.log('logout', this.$store.state)
       this.$router.push('/login')
     }
   },
