@@ -217,8 +217,11 @@ export default {
       api.login({ name: this.userName, password: this.pwd }).then(re => {
         let userData = re.data
         if (userData.code === 0) {
+          this.$store.commit('setName', this.userName)
+          this.$store.commit('setHeadIcon', this.headIcon)
+          this.$store.commit('login')
           let state = { islogin: true, name: this.userName, headIcon: '1' }
-          this.$store.replaceState(state)
+          // this.$store.replaceState(state)
           window.localStorage.setItem('state', JSON.stringify(state))
           console.log(JSON.parse(window.localStorage.getItem('state')), this.$store.state)
           this.$router.push('/index')

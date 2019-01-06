@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
 
 const server = axios.create({
   baseURL: 'http://139.199.221.89:8083/', // change to our ip
@@ -26,8 +26,21 @@ const apiDes = [{
   url: 'message/confirmMessages',
   method: 'post',
   params: ['name']
-}
-]
+}, {
+  fun: 'viewAllRepositoryMoments',
+  url: 'moment/viewAllRepositoryMoments',
+  method: 'get'
+}, {
+  fun: 'viewFriendInformation',
+  url: 'person/viewFriendInformation',
+  method: 'post',
+  params: ['myname', 'friendname']
+}, {
+  fun: 'getFriendsRecommend',
+  url: 'person/recommend',
+  method: 'post',
+  params: ['name']
+}]
 
 // 由接口描述生成接口调用函数
 function ApiGenerator (des) {

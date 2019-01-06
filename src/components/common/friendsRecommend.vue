@@ -5,11 +5,19 @@
     </div>
     <div v-for="(friend, index) in friends"
          :key="index"
-         class="friend-recommand">
-      <svg class="icon head-icon"
-           aria-hidden="true">
-        <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
-      </svg>
+         class="friend-recommand"
+         @click="showMomentStream(index)">
+      <el-popover
+        placement="left-start"
+        trigger="hover"
+        v-model="friend.floatVisible">
+        <floatwindow />
+        <div slot="reference" @mouseover="requestUserMsg(index)" @mouseleave="closeFloat(index)">
+          <svg class="icon head-icon" aria-hidden="true">
+            <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
+          </svg>
+        </div>
+      </el-popover>
       <span class="friend-recommand-name">
         <strong>{{ friend.name }}</strong>
         <!-- <span>#  {{ friend.className }}</span> -->
@@ -20,38 +28,75 @@
 </template>
 
 <script>
+import floatWindow from './floating_window'
+import api from '../../api/api'
+
 export default {
   name: 'FriendsRecommand',
   data () {
     return {
-      friends: [
-        {
-          name: '小王',
-          headIcon: '1',
-          count: '1'
-        },
-        {
-          name: '小张',
-          headIcon: '2',
-          count: '2'
-        },
-        {
-          name: '小李',
-          headIcon: '3',
-          count: '3'
-        },
-        {
-          name: '小红',
-          headIcon: '4',
-          count: '4'
-        },
-        {
-          name: '小黑',
-          headIcon: '5',
-          count: '5'
-        }
-      ]
+      name: this.$store.state.name,
+      friends: []
     }
+  },
+  components: {
+    floatwindow: floatWindow
+  },
+  methods: {
+    requestUserMsg: function (index) {
+      this.friends[index].floatVisible = true
+    },
+    closeFloat: function (index) {
+      this.friends[index].floatVisible = false
+    },
+    showMomentStream: function (index) {
+      api.viewFriendInformation({
+        myname: this.name,
+        friendname: this.friends[index].name
+      }).then(re => {
+        let moments = []
+        let returnData = re.data
+        if (returnData.code === 1) {
+          this.$message('你们还不是好友！')
+        } else {
+          returnData.moments.forEach((moment) => {
+            moments.push({
+              'userName': returnData.name,
+              'headIcon': '5',
+              'floatVisible': false,
+              'releaseTime': moment.date,
+              'content': moment.content,
+              'pictureUrl': moment.pictureUrl,
+              'likeList': moment.likeList
+            })
+          })
+          this.$store.commit('changeMomentStream', moments)
+        }
+      }).catch(e => {
+        console.error(e)
+      })
+    }
+  },
+  created: function () {
+    api.getFriendsRecommend({ name: this.name }).then(re => {
+      let returnData = re.data
+      if (returnData.code === 0) {
+        returnData.data.forEach((item) => {
+          this.friends.push({
+            'name': item.name,
+            'headIcon': '3',
+            'count': item.count
+          })
+        })
+      } else {
+        this.$message({
+          message: '好友推荐列表加载失败',
+          type: 'warning'
+        })
+      }
+    }).catch(e => {
+      console.error(e)
+    })
   }
 }
 </script>

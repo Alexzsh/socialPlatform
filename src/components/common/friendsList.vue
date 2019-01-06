@@ -5,11 +5,19 @@
     </div>
     <div v-for="(friend, index) in friends"
          :key="index"
-         class="friend-list">
-      <svg class="icon head-icon"
-           aria-hidden="true">
-        <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
-      </svg>
+         class="friend-list"
+         @click="showMomentStream(index)">
+      <el-popover
+        placement="left-start"
+        trigger="hover"
+        v-model="friend.floatVisible">
+        <floatwindow />
+        <div slot="reference" @mouseover="requestUserMsg(index)" @mouseleave="closeFloat(index)">
+          <svg class="icon head-icon" aria-hidden="true">
+            <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>
+          </svg>
+        </div>
+      </el-popover>
       <span class="friend-list-name">
         <strong>{{ friend.name }}</strong>
         <span># {{ friend.className }}</span>
@@ -19,37 +27,50 @@
 </template>
 
 <script>
+import floatWindow from './floating_window'
+import api from '../../api/api'
+
 export default {
   name: 'FriendsList',
   data () {
     return {
-      friends: [
-        {
-          name: '小王',
-          headIcon: '1',
-          className: '1801'
-        },
-        {
-          name: '小张',
-          headIcon: '2',
-          className: '1802'
-        },
-        {
-          name: '小李',
-          headIcon: '3',
-          className: '1803'
-        },
-        {
-          name: '小红',
-          headIcon: '4',
-          className: '1804'
-        },
-        {
-          name: '小黑',
-          headIcon: '5',
-          className: '1805'
-        }
-      ]
+      name: this.$store.state.name,
+      friends: this.$store.state.friendsList
+    }
+  },
+  components: {
+    floatwindow: floatWindow
+  },
+  methods: {
+    requestUserMsg: function (index) {
+      this.friends[index].floatVisible = true
+    },
+    closeFloat: function (index) {
+      this.friends[index].floatVisible = false
+    },
+    showMomentStream: function (index) {
+      api.viewFriendInformation({
+        myname: this.name,
+        friendname: this.friends[index].name
+      }).then(re => {
+        let moments = []
+        let returnData = re.data
+        returnData.moments.forEach((moment) => {
+          moments.push({
+            'userName': returnData.name,
+            'headIcon': '5',
+            'floatVisible': false,
+            'releaseTime': moment.date,
+            'content': moment.content,
+            'pictureUrl': moment.pictureUrl,
+            'likeList': moment.likeList
+          })
+        })
+        this.$store.commit('changeMomentStream', moments)
+        console.log('ok')
+      }).catch(e => {
+        console.error(e)
+      })
     }
   }
 }
