@@ -6,6 +6,7 @@ import momentStream from '../components/common/momentStream'
 import notifyContent from '../components/common/notifyContent'
 import floatingWindow from '../components/common/floating_window'
 import index from '../components/pages/index'
+import personalInfoComponent from '../components/common/personalInfoComponent'
 const routers = [{
   path: '/',
   redirect: '/login'
@@ -50,6 +51,10 @@ const routers = [{
   path: '/floatingWindow',
   name: 'floatingWindow',
   component: floatingWindow
+}, {
+  path: '/personalInfoComponent',
+  name: 'personalInfoComponent',
+  component: personalInfoComponent
 }
 ]
 

@@ -33,7 +33,7 @@
         <!--<p style="line-height: 60px; text-align: center;">LOGO</p>-->
       </div>
       <div class="g-nav-right">
-        <div v-on:click="changeRoute('/PersonalInfo')"
+        <div @click="dialogVisible = true"
              class="head-icon">
           <el-tooltip class="item"
                       effect="dark"
@@ -42,6 +42,18 @@
             <img src="https://hacks.mozilla.org/files/2017/06/firefox-logo.png"
                  class="circle">
           </el-tooltip>
+          <el-dialog title="提示"
+                     :visible.sync="dialogVisible"
+                     width="30%"
+                     :before-close="handleClose">
+            <span>这是一段信息</span>
+            <span slot="footer"
+                  class="dialog-footer">
+              <el-button @click="dialogVisible = false">取 消</el-button>
+              <el-button type="primary"
+                         @click="dialogVisible = false">确 定</el-button>
+            </span>
+          </el-dialog>
         </div>
         <div class="g-nav-logout"
              v-on:click="logout">
@@ -66,7 +78,8 @@ export default {
   },
   data () {
     return {
-      activeIndex: "1"
+      activeIndex: "1",
+      dialogVisible: false
     }
 
   },
