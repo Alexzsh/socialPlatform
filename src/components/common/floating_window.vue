@@ -12,29 +12,23 @@
                aria-hidden="true">
             <use :xlink:href="'#favicon-default'+(iconId)"></use>
           </svg>
-          <div class="fbtn" v-if="true">
-            <el-button type="danger" size="mini"
-                       round
-                       class="concern">已是好友</el-button>
-          </div>
-          <div v-else>
-            <el-button type="danger"
-                       round
-                       class="concern" @click="addFriend">添加好友</el-button>
+          <div class="fbtn">
+            <el-button type="danger" size="mini" round class="concern" v-if="hover">已是好友</el-button>
+            <el-button type="danger" size="mini" round class="concern" @click="addFriend" v-else>添加好友</el-button>
           </div>
         </div>
         <div class="fperson-text">
           <div class="fperson-name">
-            <a class="fperson-u">@{{person.name}}</a>
+            <a class="fperson-u">@{{name}}</a>
           </div>
           <div class="fperson-content">
             <div class="fleft">
               <span><strong>动态</strong></span>
-              <span> {{ person.momentCount }}</span>
+              <span> {{moments.length}}</span>
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{person.likeList.length}}</span>
+              <span>{{friends.length}}</span>
             </div>
           </div>
         </div>
@@ -44,41 +38,77 @@
 </template>
 
 <script>
+import api from '../../api/api'
 export default {
   name: 'floating_window',
   data () {
     return {
-      person:
+      myname: '小健',
+      friendname: '小健8号',
+      id: null,
+      name: '小健8号',
+      iconId: '8',
+      friends: ['xi', 'xx', 'xx'],
+      moments: [
         {
-          id: '2',
-          name: '小健8号',
-          iconId: '9',
-          momentCount: '5',
+          momentId: 139,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
           likeList: [
-            {
-              name: 'test1',
-              headIcon: '1'
-            },
-            {
-              name: 'test2',
-              headIcon: '2'
-            },
-            {
-              name: 'test3',
-              headIcon: '1'
-            }
-          ],
-          followeeNum: '20'
+            'xxinsert1'
+          ]
+        },
+        {
+          momentId: 140,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1',
+            '大健4号'
+          ]
+        },
+        {
+          momentId: 142,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1',
+            '大健4号'
+          ]
+        },
+        {
+          momentId: 138,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            '小健8号',
+            'xxinsert1'
+          ]
+        },
+        {
+          momentId: 137,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            '大健4号',
+            '小健8号',
+            '小健7号',
+            'xxinsert1'
+          ]
         }
+      ]
     }
   },
-  // props
-
-  computed: {
-    isLike () {
-      return function (index) {
-        return this.inArray(this.moments[index].likeList, this.name)
-      }
+  props: {
+    hover: false
+  },
+  methods: {
+    addFriend () {
+      api.addFriend({myname: this.myname, friendname: this.friendname}).then(re => {
+        console.log('addFriendSuccess', re)
+      }).catch(e => {
+        console.log('addFriendError', e)
+      })
     }
   }
 }
@@ -106,10 +136,10 @@ export default {
         font-size: 15px;
       }
       .fbtn{
-        margin: 10px 0 10px 0;
+        margin: 5px 0 5px 0;
         .concern{
           width:90px;
-          height: 25px;
+          height:25px;
         }
       }
       .fperson-content {
@@ -129,7 +159,7 @@ export default {
     #ficon {
       width: 78px;
       height: 78px;
-      margin: -40px 0 0 0;
+      margin: -40px 0 0 0px;
       float: left;
     }
   }

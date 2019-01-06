@@ -27,6 +27,11 @@ const apiDes = [{
   method: 'post',
   params: ['name']
 }, {
+  fun: 'addFriend',
+  url: 'person/addfriend',
+  method: 'post',
+  params: ['myname', 'friendname']
+}, {
   fun: 'viewAllRepositoryMoments',
   url: 'moment/viewAllRepositoryMoments',
   method: 'get'

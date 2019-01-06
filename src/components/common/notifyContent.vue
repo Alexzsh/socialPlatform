@@ -15,7 +15,7 @@
       </el-table>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogTableVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogTableVisible = false">确 定</el-button>
+        <el-button type="primary" @click="confirmNotify">确 定</el-button>
   </span>
     </el-dialog>
   </div>
@@ -23,7 +23,6 @@
 <script>
 import api from '../../api/api'
 export default {
-
   name: 'notifyContent',
   data () {
     return {
@@ -66,10 +65,11 @@ export default {
       })
     },
     confirmNotify () {
-      api.getMessages({name: this.name}).then(re => {
-        console.log('agetMessagesSuccess', re)
+      this.dialogTableVisible = false
+      api.confirmMessages({name: this.name}).then(re => {
+        console.log('confirmMessagesSuccess', re)
       }).catch(e => {
-        console.log('getMessagesError', e)
+        console.log('confirmMessagesError', e)
       })
     }
   }
