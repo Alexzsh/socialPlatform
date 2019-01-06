@@ -57,6 +57,7 @@
 <script>
 import floatWindow from './floating_window'
 import store from '../../store'
+import api from '../../api/api'
 
 export default {
   name: 'momentStream',
@@ -69,6 +70,26 @@ export default {
   },
   components: {
     floatwindow: floatWindow
+  },
+  created () {
+    api.viewAllRepositoryMoments().then(re => {
+      let moments = []
+      let returnData = re.data
+      console.log('-----------------')
+      console.log(returnData)
+      returnData.forEach((item) => {
+        moments.push({
+          'userName': item.name,
+          'headIcon': '5',
+          'floatVisible': false,
+          'releaseTime': item.moment.date,
+          'content': item.moment.content,
+          'pictureUrl': item.moment.pictureUrl,
+          'likeList': item.moment.likeList
+        })
+      })
+      this.$store.commit('changeMomentStream', moments)
+    })
   },
   methods: {
     inArray: function (arr, item) {

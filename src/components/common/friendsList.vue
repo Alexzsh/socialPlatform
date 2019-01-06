@@ -67,7 +67,6 @@ export default {
           })
         })
         this.$store.commit('changeMomentStream', moments)
-        console.log('ok')
       }).catch(e => {
         console.error(e)
       })
