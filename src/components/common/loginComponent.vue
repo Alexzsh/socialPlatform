@@ -89,9 +89,6 @@ export default {
       if (value === '') {
         return callback(new Error('姓名不能为空'))
       } else {
-        if (this.ruleForm.name !== '') {
-          this.$refs.ruleForm.validateField('checkName')
-        }
         callback()
       }
     }
@@ -109,8 +106,8 @@ export default {
       if (value === '') {
         return callback(new Error('班级不能为空'))
       } else {
-        if (this.ruleForm.className !== '') {
-          this.$refs.ruleForm.validateField('checkClassName')
+        if (this.ruleForm.className !== '' && this.ruleForm.className.slice(0, 2) !== '18') {
+          callback(new Error('班级不能为空'))
         }
         callback()
       }
@@ -119,9 +116,6 @@ export default {
       if (value === '') {
         return callback(new Error('邮箱不能为空'))
       } else {
-        if (this.ruleForm.email !== '') {
-          this.$refs.ruleForm.validateField('checkClassName')
-        }
         callback()
       }
     }
@@ -250,7 +244,7 @@ export default {
   },
   computed: {
     isComplete: function () {
-      if (this.verificationCode && this.ruleForm.name && this.ruleForm.age && this.ruleForm.className && this.ruleForm.email &&
+      if (this.verificationCode && this.ruleForm.name && this.ruleForm.sex && this.ruleForm.className && this.ruleForm.email &&
         this.ruleForm.pass && this.ruleForm.checkPass) {
         return false
       } else {

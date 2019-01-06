@@ -27,8 +27,17 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   // 模拟登陆状态
-
-  let isLogin = window.localStorage.getItem('state') ? JSON.parse(window.localStorage.getItem('state'))['islogin'] : false
+  let localState = window.localStorage.getItem('state')
+  if (localState != null) {
+    localState = JSON.parse(localState)
+    if (localState.islogin !== store.state.islogin) {
+      store.state.islogin = localState.islogin
+      store.state.name = localState.name
+      store.state.headIcon = localState.headIcon
+    }
+  }
+  let isLogin = localState ? JSON.parse(window.localStorage.getItem('state'))['islogin'] : false
+  console.log('islogin', isLogin, window.localStorage.getItem('state'), to.path, store.state)
   // let isLogin = false
   if (!isLogin) {
     if (to.path !== '/login' && to.path !== '/logout') {
@@ -45,7 +54,7 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     if (to.path === '/login' || to.path === 'logout') {
-      return next('/')
+      return next()
     }
     next()
   }

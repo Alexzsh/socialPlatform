@@ -1,11 +1,7 @@
 <template>
   <div>
-    <el-button type="text"
-               @click="getNotify">通知</el-button>
-    <el-dialog title="通知信息"
-               :visible.sync="dialogTableVisible"
-               width="40%"
-               top="10vh">
+    <el-button type="text" @click="getNotify">通知</el-button>
+    <el-dialog title="通知信息" :visible.sync="dialogTableVisible" width="40%" top="10vh" :before-close="handleClose">
       <el-table :data="notifys">
         <el-table-column property="nameList.length"
                          label="点赞人数"
@@ -17,23 +13,20 @@
                          label="点赞时间"
                          width="200"></el-table-column>
       </el-table>
-      <span slot="footer"
-            class="dialog-footer">
+      <span slot="footer" class="dialog-footer">
         <el-button @click="dialogTableVisible = false">取 消</el-button>
-        <el-button type="primary"
-                   @click="dialogTableVisible = false">确 定</el-button>
-      </span>
+        <el-button type="primary" @click="confirmNotify">确 定</el-button>
+  </span>
     </el-dialog>
   </div>
 </template>
 <script>
 import api from '../../api/api'
 export default {
-
   name: 'notifyContent',
   data () {
     return {
-      name: '',
+      name: '小健',
       dialogTableVisible: false,
       notifys: [{
         momentId: '1',
@@ -65,21 +58,25 @@ export default {
     },
     getNotify () {
       this.dialogTableVisible = true
-      api.getMessages({ name: this.name }).then(re => {
-        console.log('agetMessagesSuccess', re)
+      api.getMessages({name: this.name}).then(re => {
+        console.log('getMessagesSuccess', re)
       }).catch(e => {
         console.log('getMessagesError', e)
       })
     },
     confirmNotify () {
-      api.getMessages({ name: this.name }).then(re => {
-        console.log('agetMessagesSuccess', re)
+      this.dialogTableVisible = false
+      api.confirmMessages({name: this.name}).then(re => {
+        console.log('confirmMessagesSuccess', re)
       }).catch(e => {
-        console.log('getMessagesError', e)
+        console.log('confirmMessagesError', e)
       })
     }
   }
 }
 </script>
 <style scoped>
+  {
+
+  }
 </style>
