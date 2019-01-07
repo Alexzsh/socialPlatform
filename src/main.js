@@ -6,6 +6,7 @@ import App from './App'
 import routers from './router/routers'
 import utils from './utils'
 import store from './store'
+
 import ElementUI, {
   Message
 } from 'element-ui'
@@ -27,6 +28,7 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   // 模拟登陆状态
+  if (to.path === '/test') next()
   let localState = window.localStorage.getItem('state')
   if (localState != null) {
     localState = JSON.parse(localState)
@@ -59,6 +61,7 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
 Vue.prototype.$utils = utils
 /* eslint-disable no-new */
 new Vue({

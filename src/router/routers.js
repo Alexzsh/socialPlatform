@@ -7,6 +7,7 @@ import notifyContent from '../components/common/notifyContent'
 import floatingWindow from '../components/common/floating_window'
 import index from '../components/pages/index'
 import personalInfoComponent from '../components/common/personalInfoComponent'
+import test from '../components/common/test'
 const routers = [{
   path: '/',
   redirect: '/login'
@@ -55,6 +56,10 @@ const routers = [{
   path: '/personalInfoComponent',
   name: 'personalInfoComponent',
   component: personalInfoComponent
+}, {
+  path: '/test',
+  name: 'test',
+  component: test
 }
 ]
 
