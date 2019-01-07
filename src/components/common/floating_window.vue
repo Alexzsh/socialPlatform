@@ -10,33 +10,25 @@
           <svg id="ficon"
                class="icon"
                aria-hidden="true">
-            <use :xlink:href="'#favicon-default'+(person.iconId)"></use>
+            <use :xlink:href="'#favicon-default'+(iconId)"></use>
           </svg>
-          <div class="fbtn"
-               v-if="true">
-            <el-button type="danger"
-                       size="mini"
-                       round
-                       class="concern">已是好友</el-button>
-          </div>
-          <div v-else>
-            <el-button type="danger"
-                       round
-                       class="concern">添加好友</el-button>
+          <div class="fbtn">
+            <el-button type="danger" size="mini" round class="concern" v-if="hover">已是好友</el-button>
+            <el-button type="danger" size="mini" round class="concern" @click="addFriend" v-else>添加好友</el-button>
           </div>
         </div>
         <div class="fperson-text">
           <div class="fperson-name">
-            <a class="fperson-u">@{{person.name}}</a>
+            <a class="fperson-u">@{{name}}</a>
           </div>
           <div class="fperson-content">
             <div class="fleft">
               <span><strong>动态</strong></span>
-              <span> {{ person.momentCount }}</span>
+              <span> {{moments.length}}</span>
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{person.friendCount}}</span>
+              <span>{{friends.length}}</span>
             </div>
           </div>
         </div>
@@ -47,102 +39,128 @@
 
 <script>
 import api from '../../api/api'
-// import axioss from 'axios'
-// import qs from 'qs'
 export default {
   name: 'floating_window',
   data () {
     return {
-      person:
+      myname: '小健',
+      friendname: '小健8号',
+      id: null,
+      name: '小健8号',
+      iconId: '8',
+      friends: ['xi', 'xx', 'xx'],
+      moments: [
         {
-          id: '2',
-          name: '小健8号',
-          iconId: '9',
-          momentCount: '0',
-          friendCount: '0',
-          followeeNum: '20'
+          momentId: 139,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1'
+          ]
+        },
+        {
+          momentId: 140,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1',
+            '大健4号'
+          ]
+        },
+        {
+          momentId: 142,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            'xxinsert1',
+            '大健4号'
+          ]
+        },
+        {
+          momentId: 138,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            '小健8号',
+            'xxinsert1'
+          ]
+        },
+        {
+          momentId: 137,
+          pictureUrl: 'www.test.com',
+          content: '今天的月色真好',
+          likeList: [
+            '大健4号',
+            '小健8号',
+            '小健7号',
+            'xxinsert1'
+          ]
         }
+      ]
     }
   },
-  // props
-  beforeMount: function () {
-    // const data = { myname: '小健', friendname: '小健8号' }
-    // const options = {
-    //   method: 'GET',
-    //   headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
-    //   data: qs.stringify(data),
-    //   url: 'http://139.199.221.89:8083/person/viewFriendInformation'
-    // }
-    // axioss(options)
-    // const params = new URLSearchParams()
-    // params.append('myname', '小健')
-    // params.append('friendname', '小健8号')
-    // axioss.get('http://139.199.221.89:8083/person/viewFriendInformation', params, Headers = {}).then(res => {
-    //   console.log(res)
-    // })
-    api.viewFriendInformation({ myname: '小健', friendname: '小健8号' }).then(res => {
-      console.log(res)
-      this.person.friendCount = res.data.friends.length
-      this.person.momentCount = res.data.moments.length
-    })
+  props: {
+    hover: false
   },
-  computed: {
-    isLike () {
-      return function (index) {
-        return this.inArray(this.moments[index].likeList, this.name)
-      }
+  methods: {
+    addFriend () {
+      api.addFriend({myname: this.myname, friendname: this.friendname}).then(re => {
+        console.log('addFriendSuccess', re)
+      }).catch(e => {
+        console.log('addFriendError', e)
+      })
     }
   }
 }
 </script>
 <style scoped lang='scss'>
-.box-card {
-  width: 200px;
-  height: 180px;
-  position: relative;
-  .fu-bgUserColor {
-    background-color: #1da1f2 !important ;
-  }
-  .fu-block {
-    display: block !important;
-    height: 70px;
-    width: 100%;
-    padding: 0;
-  }
-  .fpost {
-    width: 100%;
-    .fperson-name {
-      position: absolute;
-      left: 10px;
-      font-weight: bold;
-      font-size: 15px;
+  .box-card {
+    width: 200px;
+    height:180px;
+    position: relative;
+    .fu-bgUserColor {
+      background-color: #1da1f2 !important ;
     }
-    .fbtn {
-      margin: 10px 0 10px 0;
-      .concern {
-        width: 90px;
-        height: 25px;
-      }
+    .fu-block {
+      display: block !important;
+      height: 70px;
+      width: 100%;
+      padding: 0;
     }
-    .fperson-content {
-      font-size: 10px;
-      padding-top: 30px;
-      padding-bottom: 10px;
-      .fleft {
+    .fpost {
+      width: 100%;
+      .fperson-name {
         position: absolute;
-        left: 20px;
+        left:10px;
+        font-weight: bold;
+        font-size: 15px;
       }
-      .fright {
-        position: absolute;
-        left: 95px;
+      .fbtn{
+        margin: 5px 0 5px 0;
+        .concern{
+          width:90px;
+          height:25px;
+        }
+      }
+      .fperson-content {
+        font-size: 10px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        .fleft {
+          position: absolute;
+          left:20px;
+        }
+        .fright{
+          position: absolute;
+          left:95px;
+        }
       }
     }
+    #ficon {
+      width: 78px;
+      height: 78px;
+      margin: -40px 0 0 0px;
+      float: left;
+    }
   }
-  #ficon {
-    width: 78px;
-    height: 78px;
-    margin: -40px 0 0 0;
-    float: left;
-  }
-}
 </style>

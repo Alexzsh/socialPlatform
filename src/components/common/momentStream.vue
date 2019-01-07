@@ -17,7 +17,7 @@
         </el-popover>
         <div class="header-text">
           <span><strong>@{{ moment.userName }}</strong></span>
-          <span> · {{ moment.releaseTime }}</span>
+          <span class="release-time"> · {{ moment.releaseTime }}</span>
         </div>
       </div>
       <div class="stream-body">
@@ -57,6 +57,7 @@
 <script>
 import floatWindow from './floating_window'
 import store from '../../store'
+import api from '../../api/api'
 
 export default {
   name: 'momentStream',
@@ -69,6 +70,25 @@ export default {
   },
   components: {
     floatwindow: floatWindow
+  },
+  created () {
+    api.viewAllRepositoryMoments().then(re => {
+      let moments = []
+      let returnData = re.data.data
+      returnData.forEach((item) => {
+        moments.push({
+          'id': item.momentId,
+          'userName': item.name,
+          'headIcon': '5',
+          'floatVisible': false,
+          'releaseTime': item.moment.date,
+          'content': item.moment.content,
+          'pictureUrl': item.moment.pictureUrl,
+          'likeList': item.moment.likeList
+        })
+      })
+      this.$store.commit('changeMomentStream', moments)
+    })
   },
   methods: {
     inArray: function (arr, item) {
@@ -90,9 +110,23 @@ export default {
     },
     addLike: function (index) {
       if (this.inArray(this.moments[index].likeList, this.name)) {
-        this.removeItem(this.moments[index].likeList, this.name)
+        api.addLike({
+          name: this.$store.state.name,
+          id: this.$store.state.momentStream[index].id
+        }).then(re => {
+          if (re.data.code === 0) {
+            this.removeItem(this.moments[index].likeList, this.name)
+          }
+        })
       } else {
-        this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
+        api.addLike({
+          name: this.$store.state.name,
+          id: this.$store.state.momentStream[index].id
+        }).then(re => {
+          if (re.data.code === 0) {
+            this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
+          }
+        })
       }
     },
     requestUserMsg: function (index) {
@@ -146,6 +180,10 @@ export default {
       span {
         display: inline-block;
         width: 80px;
+      }
+
+      .release-time {
+        width: 150px;
       }
     }
   }

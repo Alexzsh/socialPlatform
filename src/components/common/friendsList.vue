@@ -60,6 +60,7 @@ export default {
         let returnData = re.data
         returnData.moments.forEach((moment) => {
           moments.push({
+            'id': moment.momentId,
             'userName': returnData.name,
             'headIcon': '5',
             'floatVisible': false,
@@ -70,7 +71,6 @@ export default {
           })
         })
         this.$store.commit('changeMomentStream', moments)
-        console.log('ok')
       }).catch(e => {
         console.error(e)
       })
@@ -116,7 +116,6 @@ export default {
   top: 5px;
   left: 20px;
 }
-
 .friend-list-name {
   font-size: 12px;
   position: relative;

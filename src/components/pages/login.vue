@@ -38,7 +38,7 @@ export default {
 <style lang="scss" scoped>
 #login {
   width: 100%;
-  height: 800px;
+  height: 100%;
 }
 #left {
   display: block;

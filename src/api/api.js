@@ -12,19 +12,10 @@ const apiDes = [{
   method: 'post',
   params: ['moment', 'name']
 }, {
-  fun: 'register',
-  url: 'person/addregister',
-  method: 'post',
-  params: ['name', 'password', 'sex', 'classNumber', 'captcha']
-}, {
   fun: 'login',
   url: 'login',
   method: 'post',
   params: ['name', 'password']
-}, {
-  fun: 'logout',
-  url: 'logout',
-  method: 'post'
 }, {
   fun: 'getMessages',
   url: 'message/getMessages',
@@ -35,6 +26,11 @@ const apiDes = [{
   url: 'message/confirmMessages',
   method: 'post',
   params: ['name']
+}, {
+  fun: 'addFriend',
+  url: 'person/addfriend',
+  method: 'post',
+  params: ['myname', 'friendname']
 }, {
   fun: 'viewAllRepositoryMoments',
   url: 'moment/viewAllRepositoryMoments',
@@ -49,6 +45,11 @@ const apiDes = [{
   url: 'person/recommend',
   method: 'post',
   params: ['name']
+}, {
+  fun: 'addLike',
+  url: 'message/addLike',
+  method: 'post',
+  params: ['name', 'id']
 }]
 
 // 由接口描述生成接口调用函数
