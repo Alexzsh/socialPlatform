@@ -80,15 +80,16 @@ export default {
         moments.push({
           'id': item.momentId,
           'userName': item.name,
-          'headIcon': util.getIconId(),
+          'headIcon': util.getIconId(item.name),
           'floatVisible': false,
           'releaseTime': item.moment.date,
           'content': item.moment.content,
           'pictureUrl': item.moment.pictureUrl,
-          'likeList': item.moment.likeList
+          'likeList': util.getLikeList(item.moment.likeList)
         })
       })
       this.$store.commit('changeMomentStream', moments)
+      console.log(this.$store.state.momentStream)
     })
   },
   methods: {
@@ -111,23 +112,23 @@ export default {
     },
     addLike: function (index) {
       if (this.inArray(this.moments[index].likeList, this.name)) {
-        api.addLike({
-          name: this.$store.state.name,
-          id: this.$store.state.momentStream[index].id
-        }).then(re => {
-          if (re.data.code === 0) {
-            this.removeItem(this.moments[index].likeList, this.name)
-          }
-        })
+        // api.addLike({
+        //   name: this.$store.state.name,
+        //   id: this.$store.state.momentStream[index].id
+        // }).then(re => {
+        //   if (re.data.code === 0) {
+        this.removeItem(this.moments[index].likeList, this.name)
+        //   }
+        // })
       } else {
-        api.addLike({
-          name: this.$store.state.name,
-          id: this.$store.state.momentStream[index].id
-        }).then(re => {
-          if (re.data.code === 0) {
-            this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
-          }
-        })
+        // api.addLike({
+        //   name: this.$store.state.name,
+        //   id: this.$store.state.momentStream[index].id
+        // }).then(re => {
+        //   if (re.data.code === 0) {
+        this.moments[index].likeList.push({ 'name': this.name, 'headIcon': this.headIcon })
+        //   }
+        // })
       }
     },
     requestUserMsg: function (index) {
