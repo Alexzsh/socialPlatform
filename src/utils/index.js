@@ -93,6 +93,16 @@ export default {
     })
     return likeList
   },
+  getLikeList2: function (items) {
+    let likeList = []
+    items.forEach(item => {
+      likeList.push({
+        'name': item.name,
+        'headIcon': this.getIconId(item.name)
+      })
+    })
+    return likeList
+  },
   getMomentsNumber: function (name) {
     for (let i = 0; i < Person.length; i++) {
       if (name === Person[i].name) {
