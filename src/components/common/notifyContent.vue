@@ -1,28 +1,27 @@
 <template>
   <div>
-    <el-button type="text"
-               @click="getNotify">通知</el-button>
-    <el-dialog title="通知信息"
-               :visible.sync="dialogTableVisible"
-               width="40%"
-               top="10vh"
-               :before-close="handleClose">
-      <el-table :data="notifys">
-        <el-table-column property="nameList.length"
-                         label="点赞人数"
-                         width="150"></el-table-column>
-        <el-table-column property="nameList"
-                         label="点赞好友"
-                         width="150"></el-table-column>
-        <el-table-column property="date"
-                         label="点赞时间"
-                         width="200"></el-table-column>
-      </el-table>
-      <span slot="footer"
-            class="dialog-footer">
-        <el-button @click="dialogTableVisible = false">取 消</el-button>
-        <el-button type="primary"
-                   @click="confirmNotify">确 定</el-button>
+    <el-button type="text" @click="getNotify">通知</el-button>
+    <el-dialog title="通知信息" :visible.sync="dialogTableVisible" width="25%" top="10vh">
+      <el-table :data="notifys"  size="mini" stripe>
+          <el-table-column prop="likeList.length" label="点赞数" width="100" ></el-table-column>
+          <el-table-column label="点赞好友" width="100">
+            <template slot-scope="scope">
+                 <span v-for="(like,index) in scope.row.likeList" :key="index">
+                   {{like.name}}<br>
+                 </span>
+              </template>
+            </el-table-column>
+          <el-table-column label="点赞时间" width="100">
+            <template slot-scope="scope">
+                 <span v-for="(like,index) in scope.row.likeList" :key="index">
+                   {{like.time}}<br>
+                 </span>
+            </template>
+          </el-table-column>
+        </el-table>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="mini"  @click="dialogTableVisible = false">取 消</el-button>
+        <el-button size="mini" type="primary" @click="confirmNotify">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -35,23 +34,34 @@ export default {
     return {
       name: '小健',
       dialogTableVisible: false,
-      notifys: [{
-        momentId: '1',
-        nameList: ['大健1号'],
-        date: '2018-12-22 15:36:18'
-      }, {
-        momentId: '2',
-        nameList: ['大健2号'],
-        date: '2018-12-22 15:36:18'
-      }, {
-        momentId: '3',
-        nameList: ['大健3号', '小健7号'],
-        date: '2018-12-22 15:36:18'
-      }, {
-        momentId: '4',
-        nameList: ['大健4号'],
-        date: '2018-12-22 15:36:18'
-      }]
+      notifys: [
+        {
+          momentId: 145,
+          likeList: [
+            {
+              name: 'zsh',
+              time: null
+            },
+            {
+              name: '大健4号',
+              time: '2019-01-04 20:41:26'
+            }
+          ]
+        },
+        {
+          momentId: 144,
+          likeList: [
+            {
+              name: '修改之后的许康琪',
+              time: null
+            },
+            {
+              name: '小健7号',
+              time: null
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {
@@ -82,7 +92,15 @@ export default {
   }
 }
 </script>
-<style scoped>
- {
-}
+<style lang="scss">
+  .el-dialog__header {
+    padding: 10px 10px 10px;
+    background-color: #1DA1F2 !important;
+  }
+  .el-dialog__body{
+    pading:2px 10px;
+  }
+  .el-dialog__body{
+    padding:10px 20px 10px;
+  }
 </style>
