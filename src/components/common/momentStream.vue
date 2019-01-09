@@ -8,7 +8,7 @@
           placement="left-start"
           trigger="hover"
           v-model="moment.floatVisible">
-          <floatwindow></floatwindow>
+          <floatwindow :name="moment.userName"></floatwindow>
           <div slot="reference" @mouseover="requestUserMsg(index)" @mouseleave="closeFloat(index)">
             <svg class="icon head-icon" aria-hidden="true">
               <use :xlink:href="'#favicon-default' + (moment.headIcon)"></use>

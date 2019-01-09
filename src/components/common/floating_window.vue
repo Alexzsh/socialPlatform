@@ -24,11 +24,11 @@
           <div class="fperson-content">
             <div class="fleft">
               <span><strong>动态</strong></span>
-              <span> {{moments.length}}</span>
+              <span>{{moments}}</span>
             </div>
             <div class="fright">
               <span><strong>好友人数</strong></span>
-              <span>{{friends.length}}</span>
+              <span>{{friends}}</span>
             </div>
           </div>
         </div>
@@ -38,78 +38,35 @@
 </template>
 
 <script>
-import api from '../../api/api'
+// import api from '../../api/api'
+import util from '../../utils'
 export default {
-  name: 'floating_window',
+
   data () {
     return {
-      myname: '小健',
-      friendname: '小健8号',
-      id: null,
-      name: '小健8号',
       iconId: '8',
-      friends: ['xi', 'xx', 'xx'],
-      moments: [
-        {
-          momentId: 139,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            'xxinsert1'
-          ]
-        },
-        {
-          momentId: 140,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            'xxinsert1',
-            '大健4号'
-          ]
-        },
-        {
-          momentId: 142,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            'xxinsert1',
-            '大健4号'
-          ]
-        },
-        {
-          momentId: 138,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            '小健8号',
-            'xxinsert1'
-          ]
-        },
-        {
-          momentId: 137,
-          pictureUrl: 'www.test.com',
-          content: '今天的月色真好',
-          likeList: [
-            '大健4号',
-            '小健8号',
-            '小健7号',
-            'xxinsert1'
-          ]
-        }
-      ]
+      friends: 1,
+      moments: 1
     }
   },
   props: {
-    hover: false
+    hover: false,
+    name: ''
   },
   methods: {
     addFriend () {
-      api.addFriend({myname: this.myname, friendname: this.friendname}).then(re => {
-        console.log('addFriendSuccess', re)
-      }).catch(e => {
-        console.log('addFriendError', e)
-      })
+      this.$store.state.friendsList.push({'name': name})
+      // api.addFriend({myname: this.myname, friendname: this.friendname}).then(re => {
+      //   console.log('addFriendSuccess', re)
+      // }).catch(e => {
+      //   console.log('addFriendError', e)
+      // })
     }
+  },
+  mounted () {
+    this.iconId = util.getIconId(this.name)
+    this.friends = util.getFriendsNumber(this.name)
+    this.moments = util.getMomentsNumber(this.name)
   }
 }
 </script>

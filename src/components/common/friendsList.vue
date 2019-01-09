@@ -10,7 +10,7 @@
       <el-popover placement="left-start"
                   trigger="hover"
                   v-model="friend.floatVisible">
-        <floatwindow />
+        <floatwindow :name="friend.name" hover="true"/>
         <div slot="reference"
              @mouseover="requestUserMsg(index)"
              @mouseleave="closeFloat(index)">
