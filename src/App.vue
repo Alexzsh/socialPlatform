@@ -7,22 +7,7 @@
 <script>
 
 export default {
-  name: 'App',
-  components: {
-  },
-  props: {},
-  data () {
-    return {
-      isLogin: this.$store.state.isLogin
-    }
-  },
   method: {
-    changeRoute (path) {
-      this.$router.push(path)
-    },
-    beforeCreate () {
-
-    },
     created () {
       let state = JSON.parse(window.localStorage.getItem('state'))
       this.$store.replaceState(state)

@@ -1,17 +1,12 @@
 <template>
   <div>
-<<<<<<< HEAD
     <el-button type="text"
                @click="getNotify">通知</el-button>
     <el-dialog title="通知信息"
                :visible.sync="dialogTableVisible"
                width="40%"
-               :modal='false'
-               top="10vh">
-=======
-    <el-button type="text" @click="getNotify">通知</el-button>
-    <el-dialog title="通知信息" :visible.sync="dialogTableVisible" width="40%" top="10vh" :before-close="handleClose">
->>>>>>> 86dddcdf06c22c487c9fc3e4c574944e04a0ce4e
+               top="10vh"
+               :before-close="handleClose">
       <el-table :data="notifys">
         <el-table-column property="nameList.length"
                          label="点赞人数"
@@ -23,10 +18,12 @@
                          label="点赞时间"
                          width="200"></el-table-column>
       </el-table>
-      <span slot="footer" class="dialog-footer">
+      <span slot="footer"
+            class="dialog-footer">
         <el-button @click="dialogTableVisible = false">取 消</el-button>
-        <el-button type="primary" @click="confirmNotify">确 定</el-button>
-  </span>
+        <el-button type="primary"
+                   @click="confirmNotify">确 定</el-button>
+      </span>
     </el-dialog>
   </div>
 </template>
@@ -68,7 +65,7 @@ export default {
     },
     getNotify () {
       this.dialogTableVisible = true
-      api.getMessages({name: this.name}).then(re => {
+      api.getMessages({ name: this.name }).then(re => {
         console.log('getMessagesSuccess', re)
       }).catch(e => {
         console.log('getMessagesError', e)
@@ -76,7 +73,7 @@ export default {
     },
     confirmNotify () {
       this.dialogTableVisible = false
-      api.confirmMessages({name: this.name}).then(re => {
+      api.confirmMessages({ name: this.name }).then(re => {
         console.log('confirmMessagesSuccess', re)
       }).catch(e => {
         console.log('confirmMessagesError', e)
@@ -86,7 +83,6 @@ export default {
 }
 </script>
 <style scoped>
-  {
-
-  }
+ {
+}
 </style>
