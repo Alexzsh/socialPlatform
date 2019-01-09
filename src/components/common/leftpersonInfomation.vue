@@ -37,12 +37,17 @@ export default {
       person:
         {
           id: '1',
-          userName: 'Test',
+          userName: '康天豪',
           iconId: '8',
-          contentNum: '15',
-          followeeNum: '25'
+          contentNum: '3',
+          followeeNum: '6'
         }
     }
+  },
+
+  mounted () {
+    this.userName = this.$store.state.userName
+    this.iconId = this.$store.state.headIcon
   }
 }
 </script>

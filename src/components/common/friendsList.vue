@@ -1,7 +1,7 @@
 <template>
   <div id="friends-list">
     <div class="header">
-      <span><strong>好坋列表</strong></span>
+      <span><strong>好友列表</strong></span>
     </div>
     <div v-for="(friend, index) in friends"
          :key="index"
