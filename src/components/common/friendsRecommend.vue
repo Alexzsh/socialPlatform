@@ -10,8 +10,9 @@
       <el-popover
         placement="left-start"
         trigger="hover"
+
         v-model="friend.floatVisible">
-        <floatwindow />
+        <floatwindow :name="friend.name"/>
         <div slot="reference" @mouseover="requestUserMsg(index)" @mouseleave="closeFloat(index)">
           <svg class="icon head-icon" aria-hidden="true">
             <use :xlink:href="'#favicon-default' + (friend.headIcon)"></use>

@@ -39,12 +39,12 @@ export default {
           momentId: 145,
           likeList: [
             {
-              name: 'zsh',
-              time: null
+              name: '许康琪',
+              time: '2019-01-04 '
             },
             {
-              name: '大健4号',
-              time: '2019-01-04 20:41:26'
+              name: '任小健',
+              time: '2019-01-04 '
             }
           ]
         },
@@ -52,12 +52,12 @@ export default {
           momentId: 144,
           likeList: [
             {
-              name: '修改之后的许康琪',
-              time: null
+              name: '康天豪',
+              time: '2019-01-04 '
             },
             {
-              name: '小健7号',
-              time: null
+              name: '孙露阳',
+              time: '2019-01-04 '
             }
           ]
         }

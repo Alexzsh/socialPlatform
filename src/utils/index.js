@@ -81,7 +81,11 @@ export default {
     }
   },
   getClassNumber: function (name) {
-    return Person[Person.indexOf(name)].className
+    for (let i = 0; i < Person.length; i++) {
+      if (name === Person[i].name) {
+        return Person[i].className
+      }
+    }
   },
   getLikeList: function (list) {
     let likeList = []

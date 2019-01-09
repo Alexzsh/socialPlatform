@@ -55,7 +55,15 @@ export default {
   },
   methods: {
     addFriend () {
-      this.$store.state.friendsList.push({'name': name})
+      console.log(this.iconId)
+      this.$store.state.friendsList.push({'name': this.name,
+        'headIcon': this.iconId,
+        'friendsNum': this.friends,
+        'momentsNum': this.moments,
+        'className': util.getClassNumber(this.name),
+        'floatVisible': false}
+      )
+
       // api.addFriend({myname: this.myname, friendname: this.friendname}).then(re => {
       //   console.log('addFriendSuccess', re)
       // }).catch(e => {
@@ -63,7 +71,7 @@ export default {
       // })
     }
   },
-  mounted () {
+  created () {
     this.iconId = util.getIconId(this.name)
     this.friends = util.getFriendsNumber(this.name)
     this.moments = util.getMomentsNumber(this.name)

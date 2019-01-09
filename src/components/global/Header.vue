@@ -10,7 +10,7 @@
                  active-text-color="#1da1f2">
           <el-menu-item index="1">
             <i class="el-icon-tickets"></i>
-            <a href="#/index">首 页</a>
+            <a href="#/index" @click="getData">首 页</a>
           </el-menu-item>
           <el-menu-item index="2"
                         style="">
@@ -70,6 +70,7 @@ import notifyContent from '../common/notifyContent'
 
 import personalInfoComponent from '../common/personalInfoComponent'
 import api from '../../api/api'
+import util from '../../utils'
 export default {
   /* eslint-disable */
   name: 'global-header',
@@ -85,8 +86,29 @@ export default {
 
   },
   methods: {
+    getData () {
+    api.viewAllRepositoryMoments().then(re => {
+      let moments = []
+      let returnData = re.data.data
+      returnData.forEach((item) => {
+        moments.push({
+          'id': item.momentId,
+          'userName': item.name,
+          'headIcon': util.getIconId(item.name),
+          'floatVisible': false,
+          'releaseTime': item.moment.date,
+          'content': item.moment.content,
+          'pictureUrl': item.moment.pictureUrl,
+          'likeList': util.getLikeList(item.moment.likeList)
+        })
+      })
+      this.$store.commit('changeMomentStream', moments)
+    })
+  },
     changeRoute (path) {
       this.$router.push(path)
+      // window.reload()
+      console.log('alert')
     },
     handleClose (done) {
       this.$confirm('确认关闭？')
