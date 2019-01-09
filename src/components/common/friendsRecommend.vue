@@ -30,6 +30,7 @@
 <script>
 import floatWindow from './floating_window'
 import api from '../../api/api'
+import util from '../../utils'
 
 export default {
   name: 'FriendsRecommand',
@@ -62,12 +63,12 @@ export default {
           returnData.moments.forEach((moment) => {
             moments.push({
               'userName': returnData.name,
-              'headIcon': '5',
+              'headIcon': util.getIconId(returnData.name),
               'floatVisible': false,
               'releaseTime': moment.date,
               'content': moment.content,
               'pictureUrl': moment.pictureUrl,
-              'likeList': moment.likeList
+              'likeList': util.getLikeList(moment.likeList)
             })
           })
           this.$store.commit('changeMomentStream', moments)
@@ -84,7 +85,7 @@ export default {
         returnData.data.forEach((item) => {
           this.friends.push({
             'name': item.name,
-            'headIcon': '3',
+            'headIcon': util.getIconId(item.name),
             'count': item.count
           })
         })

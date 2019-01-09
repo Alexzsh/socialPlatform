@@ -11,15 +11,15 @@ const store = new Vuex.Store({
     headIcon: '22',
     friendsList: [
       {
-        name: '小健8号',
-        headIcon: '3',
+        name: '许康琪',
+        headIcon: '6',
         friendsNum: 5,
         momentsNum: 10,
-        className: '1802',
+        className: '1804',
         floatVisible: false
       },
       {
-        name: '小健10号',
+        name: '闫豪',
         headIcon: '5',
         friendsNum: 15,
         momentsNum: 100,
@@ -27,11 +27,35 @@ const store = new Vuex.Store({
         floatVisible: false
       },
       {
-        name: '大健8号',
-        headIcon: '7',
+        name: '孙露阳',
+        headIcon: '4',
         friendsNum: 51,
         momentsNum: 20,
-        className: '1804',
+        className: '1801',
+        floatVisible: false
+      },
+      {
+        name: '任小健',
+        headIcon: '2',
+        friendsNum: 51,
+        momentsNum: 20,
+        className: '1802',
+        floatVisible: false
+      },
+      {
+        name: '肖文君',
+        headIcon: '9',
+        friendsNum: 51,
+        momentsNum: 20,
+        className: '1807',
+        floatVisible: false
+      },
+      {
+        name: '王鹏程',
+        headIcon: '3',
+        friendsNum: 51,
+        momentsNum: 20,
+        className: '1803',
         floatVisible: false
       }
     ],
