@@ -31,6 +31,8 @@
 <script>
 import floatWindow from './floating_window'
 import api from '../../api/api'
+import util from '../../utils'
+
 export default {
   name: 'FriendsList',
   data () {
@@ -57,16 +59,16 @@ export default {
       }).then(re => {
         let moments = []
         let returnData = re.data
-        returnData.moments.forEach((moment) => {
+        returnData.moment.forEach((item) => {
           moments.push({
-            'id': moment.momentId,
-            'userName': returnData.name,
-            'headIcon': '5',
+            'id': item.momentId,
+            'userName': returnData.person.name,
+            'headIcon': util.getIconId(returnData.person.name),
             'floatVisible': false,
-            'releaseTime': moment.date,
-            'content': moment.content,
-            'pictureUrl': moment.pictureUrl,
-            'likeList': moment.likeList
+            'releaseTime': item.date,
+            'content': item.content,
+            'pictureUrl': item.pictureUrl,
+            'likeList': util.getLikeList2(item.likeList)
           })
         })
         this.$store.commit('changeMomentStream', moments)

@@ -89,7 +89,6 @@ export default {
         })
       })
       this.$store.commit('changeMomentStream', moments)
-      console.log(this.$store.state.momentStream)
     })
   },
   methods: {
