@@ -2,8 +2,11 @@
 <template>
   <div class="post">
     <div class="circle left">
-      <img src="https://hacks.mozilla.org/files/2017/06/firefox-logo.png"
-           style="width:45px">
+      <svg id="ficon"
+             class="icon"
+             aria-hidden="true">
+              <use :xlink:href="'#favicon-default'+'8'"></use>
+            </svg>
     </div>
     <div class="right">
       <div class="input">

@@ -39,8 +39,11 @@
                       effect="dark"
                       content="点击查看个人信息"
                       placement="bottom">
-            <img src="https://hacks.mozilla.org/files/2017/06/firefox-logo.png"
-                 class="circle">
+            <svg id="ficon"
+             class="icon"
+             aria-hidden="true">
+              <use :xlink:href="'#favicon-default'+'8'"></use>
+            </svg>
           </el-tooltip>
           <el-dialog title="提示"
                      :visible.sync="dialogVisible"
@@ -120,7 +123,7 @@ export default {
   height: 46px;
   box-shadow: 0 1px 5px #999999;
   .g-header-wrapper {
-    width: 65%;
+    width: 75%;
     position: relative;
     margin: 0 auto;
   }
@@ -164,6 +167,12 @@ export default {
     margin-top: 3px;
     .head-icon {
       float: left;
+      .icon{
+        height: 4em;
+        width: 4em;
+        position: relative;
+        margin-top: -4px;
+      }
       .circle {
         height: 45px;
         clip-path: circle(100%);

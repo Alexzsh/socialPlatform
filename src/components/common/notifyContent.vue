@@ -75,7 +75,7 @@ export default {
     },
     getNotify () {
       this.dialogTableVisible = true
-      api.getMessages({name: this.name}).then(re => {
+      api.getMessages({ name: this.name }).then(re => {
         console.log('getMessagesSuccess', re)
       }).catch(e => {
         console.log('getMessagesError', e)
@@ -83,7 +83,7 @@ export default {
     },
     confirmNotify () {
       this.dialogTableVisible = false
-      api.confirmMessages({name: this.name}).then(re => {
+      api.confirmMessages({ name: this.name }).then(re => {
         console.log('confirmMessagesSuccess', re)
       }).catch(e => {
         console.log('confirmMessagesError', e)
