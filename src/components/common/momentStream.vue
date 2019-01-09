@@ -58,6 +58,7 @@
 import floatWindow from './floating_window'
 import store from '../../store'
 import api from '../../api/api'
+import util from '../../utils'
 
 export default {
   name: 'momentStream',
@@ -79,7 +80,7 @@ export default {
         moments.push({
           'id': item.momentId,
           'userName': item.name,
-          'headIcon': '5',
+          'headIcon': util.getIconId(),
           'floatVisible': false,
           'releaseTime': item.moment.date,
           'content': item.moment.content,
