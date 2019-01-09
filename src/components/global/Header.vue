@@ -123,7 +123,7 @@ export default {
   height: 46px;
   box-shadow: 0 1px 5px #999999;
   .g-header-wrapper {
-    width: 65%;
+    width: 75%;
     position: relative;
     margin: 0 auto;
   }

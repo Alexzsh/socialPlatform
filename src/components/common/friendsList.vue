@@ -31,7 +31,6 @@
 <script>
 import floatWindow from './floating_window'
 import api from '../../api/api'
-
 export default {
   name: 'FriendsList',
   data () {
@@ -75,6 +74,7 @@ export default {
         console.error(e)
       })
     }
+
   }
 }
 </script>
